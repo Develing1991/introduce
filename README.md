@@ -1,7 +1,22 @@
 
-# benefits (개인 프로젝트)
+# benefits (MSA 프로젝트)
 
-<a href="#swagger">Swagger API 문서로 이동</a>
+
+- <a href="#_1">Micro-service 구성도</a>
+  - <a href="#1_1-">Micro service - docker-compose 구성 목록 (이미지 파일)</a>
+  - <a href="#1_2">서비스 설명</a>
+- <a href="#2">API 권한 및 보안 관련 설명</a>
+- <a href="#3">공통 응답 Spec 구조</a>
+- <a href="#4">CI/CD Pipeline 구성도</a>
+  - <a href="#4_1">CI/CD - docker-compose 구성 목록</a>
+- <a href="#5">Docker Hub</a>
+  - <a href="#5_1">Dockerfile 예시</a>
+- <a href="#6">현재 가용중인 서비스 구성도</a>
+- <a href="#7">현재 서비스 중인 스웨거 API 문서 목록</a>
+- <a href="#8">스웨거를 위한 CORS 허용 (스웨거 도메인)</a>
+- <a href="#9">프론트엔드(SPA)를 위한 COSR 허용 (localhost 도메인)</a>
+- <a href="#10">ERD 다이어그램</a>
+- <a href="#11">ERD 관계 맵핑</a>
 
 <br>
 
@@ -9,7 +24,7 @@
   
 ![](https://velog.velcdn.com/images/develing1991/post/53bd6ec2-2868-406b-8332-3b1530f98f7f/image.png)
 
-### Micro service - docker-compose 구성 목록 (이미지)
+### Micro service - docker-compose 구성 목록 (이미지 파일)
 네트워크 : benefits-network (172.18.0.1 ~ )
 - zipkin:latest
 - wurstmeister/zookeeper:latest
@@ -172,8 +187,7 @@ CMD ["/usr/sbin/init" "systemctl" "start" "sshd"]
 
 <br><br>
 
-## 현재 서비스 중인 스웨거 API 문서 목록
-<span id="swagger"> 문서 </span>
+<h2 id="swagger">현재 서비스 중인 스웨거 API 문서 목록</h2>
 
 user-service: https://benefits.completed0728.site/user-service/swgger-ui/index.html
 
@@ -202,17 +216,17 @@ seller-service, supervisor-service (CORS):
 
 <br><br>
 
-## 프론트를 위한 COSR 허용 (로컬 도메인)
+## 프론트엔드(SPA)를 위한 COSR 허용 (localhost 도메인)
 - gateway-service(CORS): http://localhost:3001  
 게이트웨이는 `http://localhost:3001` 도메인 CORS 허용
 - user-service, order-service,  
 product-service, review-service,  
 seller-service, supervisor-service (CORS):  
 -> 각 마이크로 서비스들 `http://localhost:3001` 도메인 CORS 허용  
-- 로컬 프론트엔드 3001번으로 실행 후 API요청
+- localhost:3001번으로 실행 후 API요청
 - 요청 API 주소 예시(GET):  https://benefits.completed0728.site/user-service/users/1
 
-### 요약: FrontEnd(SPA) localhost에서 테스트 하시려면 3001번 포트로 실행 하시고 api 요청 하시면 됩니다.
+### 요약: 프론트엔드(SPA) localhost에서 테스트 하시려면 3001번 포트로 실행 하시고 api 요청 하시면 됩니다.
 
 ![](https://velog.velcdn.com/images/develing1991/post/3c54bff4-eb2c-46d1-8cec-cddf071436f1/image.png)
 
