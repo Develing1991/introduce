@@ -108,11 +108,34 @@ config-server에서 갖고 있는 RSA 알고리즘의 공개키를 통해 복호
 ## CI/CD Pipeline 구성도
 ![](https://velog.velcdn.com/images/develing1991/post/c708b244-8431-4910-bc66-c7ec2edcee51/image.png)
 
+<br>
+
 ### CI/CD - docker-compose 구성 목록
 네트워크 : cicd-network (172.19.0.1 ~ )
 - completed0728/jenkins-server:1.0
 - completed0728/ansible-server:1.0
 - completed0728/deploy-server:1.0
+
+<br>
+
+### jenkins-server
+![](https://velog.velcdn.com/images/develing1991/post/65e6bf56-0e50-4772-bd94-37fbc21e8200/image.png)
+
+<br>
+
+### 파이프라인 동작 흐름
+- 각 ssh 서버 접근은  
+접근하고자 하는 서버에는 RSA public key를 배포하고  
+접속을 시도 하는 서버는 자신의 RSA private key로 인증하여 접속 합니다.  
+1. jenkins-server에서 빌드 버튼 클릭, 또는 Github의 deploy 브랜치의 java코드 커밋, 푸시(Poll SCM)가 발생하면  
+	-> Github의 deploy 이름의 브랜치에서 코드를 가져와서 빌드합니다.  
+  -> 빌드 된 결과물(jar, source code)을 delivery-docker-server로 전달합니다.  
+    
+2. jenkins-server에서 ansible-server로 배포를 진행할 마이크로 서비스의 playbook.yml을 실행합니다.
+3. delivery-playbook.yml 실행합니다. (image build, push, prune)
+4. deploy-playbook.yml 실행합니다. (image pull, container run)
+
+![](https://velog.velcdn.com/images/develing1991/post/966b2f09-c1e5-4770-b467-da929c91be17/image.png)
 
 <br><br>
 
