@@ -1,7 +1,9 @@
 
+# benefits (개인 프로젝트)
+
+<br>
+
 ## Micro-service 구성도
-- 모든 서비스는 gateway-service의 IP를 확인하고 해당 IP에서 들어오는 요청만 허용합니다.
-- order-service와 product-service는 대용량 트래픽 관련하여 상품 수량 감소 동시성 처리를 위해 카프카 큐잉 메시지 브로커를 사용했습니다.
   
 ![](https://velog.velcdn.com/images/develing1991/post/53bd6ec2-2868-406b-8332-3b1530f98f7f/image.png)
 
@@ -25,23 +27,66 @@
 
 <br>
 
-## 보안 관련 설명
+### 서비스 설명
+- 모든 서비스는 gateway-service의 IP를 확인하고 해당 IP에서 들어오는 요청만 허용합니다.
+  
+![](https://velog.velcdn.com/images/develing1991/post/3aa65189-ec24-42be-a638-3721203103f1/image.png)
+
+<br>
+
+- order-service와 product-service는 대용량 트래픽 관련하여  
+상품 수량 감소 동시성 처리를 위해 카프카 큐잉 메시지 브로커를 사용했습니다.  
+주문을 받고 ORDER 상태로 등록하며 수량이 부족하면 REJECT상태로 업데이트 됩니다.
+
+![](https://velog.velcdn.com/images/develing1991/post/b98bcea0-ed2d-43f1-8c55-eaaea6ca3cb7/image.png)
+
+<br>
+
+- config-server에서 불러오는 공통 설정 데이터는 암호화 하였습니다. (`{cipher}`)  
+config-server에서 갖고 있는 RSA 알고리즘의 공개키를 통해 복호화 됩니다.
+
+![](https://velog.velcdn.com/images/develing1991/post/65232943-b199-4201-82c4-c34b089e6d2d/image.png)
+
+<br><br>
+
+## API 권한 및 보안 관련 설명
 - JWT 인증 방식을 사용했습니다.
-- 토큰의 권한은 발급 시 페이로드 값에 `USER`, `SELLER`, `SUPERVISOR`로 발행합니다.
+- 토큰의 권한은 발급 시 페이로드의 ROLE키 값에 `USER`, `SELLER`, `SUPERVISOR`로 발행 합니다.
 
   모든 요청과 허용은 `gateway-service`에서만 이루어지고
   
   `gateway-service`에서 토큰 자체를 검증함과 동시에 해당 토큰이 요청 된 API에 적합한 권한을 가지고 있는지도 페이로드를 통해 확인합니다.
   
-- 각각의 마이스로 서비스에서는 (USER-SERVICE를 예시)
+![](https://velog.velcdn.com/images/develing1991/post/aff84d24-6ca5-4810-9b9a-903f5c09fc66/image.png)
+
+<br>
+  
+- 각각의 마이스로 서비스에서는 (USER-SERVICE를 예시)  
   
   만약 토큰이 검증이 되었다 하더라도 자신의 정보를 조회, 수정, 삭제하는 API같은 경우에는 오직 자신만 가능해야 하므로
   
   각 서비스에 등록된 `AOP`기능을 통해 자신 이외의 요청은 차단됩니다.
+  
+![](https://velog.velcdn.com/images/develing1991/post/d62e4713-633c-474a-bfe6-527297e3d834/image.png)
 
-- 조금 더 디테일한 설명은 각 서비스의 Swagger 문서에 기재 하였습니다.
 
-<br>
+
+<br><br>
+
+## 공통 응답 Spec 구조
+```javascript
+{
+    "result": {
+        "result_code": 200,
+        "result_message": "성공",
+        "result_description": "성공"
+    },
+    "data": null,
+    "pagination": null
+}
+```
+
+<br><br>
 
 ## CI/CD Pipeline 구성도
 ![](https://velog.velcdn.com/images/develing1991/post/c708b244-8431-4910-bc66-c7ec2edcee51/image.png)
@@ -52,7 +97,7 @@
 - completed0728/ansible-server:1.0
 - completed0728/deploy-server:1.0
 
-<br>
+<br><br>
 
 ## Docker Hub
 - 모든 이미지들은 Dockerfile로 빌드 하였고 전부 수작업으로 작성 했습니다.
@@ -115,9 +160,17 @@ VOLUME ["/sys/fs/cgroup"]
 #ENTRYPOINT ["/usr/sbin/init" "systemctl" "start" "sshd"]
 CMD ["/usr/sbin/init" "systemctl" "start" "sshd"]
 ```
-<br>
+<br><br>
 
-## 실제 서비스 중인 스웨거 문서 목록 (API)
+## 현재 가용중인 서비스 구성도
+- AWS EC2 비용 관련 문제로 현재 로컬 PC에서 서비스중 입니다.
+- AWS Router53 비용만을 청구하고 있습니다.
+
+![](https://velog.velcdn.com/images/develing1991/post/f3249ecb-dc13-4027-be59-3579414e1fba/image.png)
+
+<br><br>
+
+## 현재 서비스 중인 스웨거 API 문서 목록
 user-service: https://benefits.completed0728.site/user-service/swgger-ui/index.html
 
 order-service: https://benefits.completed0728.site/order-service/swgger-ui/index.html
@@ -130,15 +183,7 @@ seller-service: https://benefits.completed0728.site/seller-service/swgger-ui/ind
 
 supervisor-service: https://benefits.completed0728.site/supervisor-service/swgger-ui/index.html
 
-<br>
-
-## 실제 가용중인 서비스 구성도
-- AWS EC2 비용 관련 문제로 현재 로컬 PC에서 서비스중 입니다.
-- AWS Router53 비용만을 청구하고 있습니다.
-
-![](https://velog.velcdn.com/images/develing1991/post/f3249ecb-dc13-4027-be59-3579414e1fba/image.png)
-
-<br>
+<br><br>
 
 ## 스웨거를 위한 CORS 허용 (스웨거 도메인)
 - gateway-service(CORS): 스웨거 도메인이 gateway-service 도메인 자체이므로  
@@ -151,7 +196,7 @@ seller-service, supervisor-service (CORS):
 
 ![](https://velog.velcdn.com/images/develing1991/post/f04c9f8b-3e9b-4a49-ac79-58ff94befd53/image.png)
 
-<br>
+<br><br>
 
 ## 프론트를 위한 COSR 허용 (로컬 도메인)
 - gateway-service(CORS): http://localhost:3001  
@@ -162,12 +207,16 @@ seller-service, supervisor-service (CORS):
 -> 각 마이크로 서비스들 `http://localhost:3001` 도메인 CORS 허용  
 - 로컬 프론트엔드 3001번으로 실행 후 API요청
 - 요청 API 주소 예시(GET):  https://benefits.completed0728.site/user-service/users/1
+
+### 요약: FrontEnd(SPA) localhost에서 테스트 하시려면 3001번 포트로 실행 하시고 api 요청 하시면 됩니다.
+
 ![](https://velog.velcdn.com/images/develing1991/post/3c54bff4-eb2c-46d1-8cec-cddf071436f1/image.png)
 
-<br>
+<br><br>
 
 ## ERD 다이어그램
 ![](https://velog.velcdn.com/images/develing1991/post/0601d52a-c4ab-4ed1-b89f-f745036d67b8/image.png)
 
 ## ERD 관계 맵핑
 ![](https://velog.velcdn.com/images/develing1991/post/df90c347-6e66-4002-8f5a-a3628a1cee86/image.png)
+
