@@ -247,7 +247,7 @@ product-service, review-service,
 seller-service, supervisor-service (CORS):  
 -> 각 마이크로 서비스들 `http://localhost:3001` 도메인 CORS 허용  
 - localhost:3001번으로 실행 후 API요청
-- 요청 API 주소 예시(GET):  https://benefits.completed0728.site/user-service/users/1
+- 요청 API 주소 예시(GET):  https://benefits.completed0728.site/user-service/open-api/users/1
 
 ### 요약: 프론트엔드(SPA) localhost에서 테스트 하시려면 3001번 포트로 실행 하시고 api 요청 하시면 됩니다.
 
