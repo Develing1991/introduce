@@ -242,7 +242,7 @@ password: spP@sswr0d!11
 </h4>
 
 ### 인증 방식 JWT - ( user-service, seller-service, supervisor-service - login )
-- **Json Web Token(JWT)**을 사용해 인증과 인가하는 방식을 사용 하였습니다.
+- **Json Web Token(JWT)** 을 사용해 인증과 인가하는 방식을 사용 하였습니다.
 - `user-service`, `seller-service`, `supervisor-service`는 토큰 발행 시에  
 페이로드의 권한 역할을 지정하는 `role`이라는 이름의 키 값에 각 각 `USER`, `SELLER`, `SUPERVISOR`로 발행 합니다.
 
