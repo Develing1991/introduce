@@ -15,6 +15,7 @@
 - <a href="#front-cors">프론트엔드(SPA)를 위한 COSR 허용 (로컬 도메인)</a>
 - <a href="#erd">ERD 다이어그램</a>
 - <a href="#erd-relation">ERD 관계 맵핑</a>
+- <a href="#after">이 후 업데이트 사항</a>
 
 <br>
 
@@ -399,3 +400,16 @@ seller-service, supervisor-service 들의 CORS 설정은
 
 ![](https://velog.velcdn.com/images/develing1991/post/58db0275-e8b3-4566-824c-ec504ba64b7d/image.png)
 
+<br><br>
+
+<h2 id="after">이 후 업데이트 사항</h2>
+
+<h4 align="right">
+	<a href="#list">목차로 이동</a>
+</h4>
+
+- user-service를 제외한 다른 마이크로 서비스들 미구현 된 AOP 검증 로직 추가
+- Resilience4J circuitbreaker 추가
+- oauth 추가
+- payment-service 추가
+- 프론트 알림을 위한 SSE(Server Sent Events)기능 추가
