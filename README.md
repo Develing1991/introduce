@@ -512,7 +512,6 @@ seller-service, supervisor-service 들의 CORS 설정은
 ![](https://velog.velcdn.com/images/develing1991/post/df90c347-6e66-4002-8f5a-a3628a1cee86/image.png)
 
 - ORM의 Entity 관계에서만 설정을 진행 하였습니다.
-- 같은 데이터베이스 내의 테이블 끼리만 연관 관계를 설정 하였습니다.
 
 ![](https://velog.velcdn.com/images/develing1991/post/58db0275-e8b3-4566-824c-ec504ba64b7d/image.png)
 
