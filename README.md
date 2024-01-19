@@ -20,6 +20,10 @@
 
 <h2 id="intro">마이크로 서비스 구성도</h2>
 
+<h4 align="right">
+	<a href="#list">목차로 이동</a>
+</h4>
+
 ![](https://velog.velcdn.com/images/develing1991/post/53bd6ec2-2868-406b-8332-3b1530f98f7f/image.png)
 
 ### Micro service - docker-compose 구성 목록 (이미지 파일)
@@ -40,14 +44,13 @@
 - completed0728/seller-service:1.0
 - completed0728/supervisor-service:1.0
 
+<br><br>
+
+<h2 id="service">서비스 핵심 기능</h2>
+
 <h4 align="right">
 	<a href="#list">목차로 이동</a>
 </h4>
-
-<br>
-
-
-<h2 id="service">서비스 핵심 기능</h2>
 
 ### user-service 예시
 - 모든 서비스는 `gateway-service`의 `IP`를 확인하고 해당 `IP`에서 들어오는 요청만 허용합니다.
@@ -118,8 +121,11 @@
 <br><br>
 
 
-
 <h2 id="auth">API 인증(Authentication) 및 인가(Authorization)</h2>
+
+<h4 align="right">
+	<a href="#list">목차로 이동</a>
+</h4>
 
 ### 인증 방식 JWT - ( user-service, seller-service, supervisor-service - login )
 - JWT을 사용해 인증과 인가하는 방식을 사용했습니다.
@@ -152,11 +158,14 @@
 
 ![](https://velog.velcdn.com/images/develing1991/post/d62e4713-633c-474a-bfe6-527297e3d834/image.png)
 
-
 <br><br>
 
 
 <h2 id="spec">공통 응답 스펙</h2>
+
+<h4 align="right">
+	<a href="#list">목차로 이동</a>
+</h4>
 
 - 공통 응답 스펙 입니다.
 ```javascript
@@ -178,6 +187,10 @@
 
 
 <h2 id="cicd">CI/CD 파이프라인 구성도</h2>
+
+<h4 align="right">
+	<a href="#list">목차로 이동</a>
+</h4>
 
 - 배포 자동화를 위해 파이프라인을 구성 했습니다.
 
@@ -217,6 +230,10 @@
 
 
 <h2 id="docker-hub">Docker Hub</h2>
+
+<h4 align="right">
+	<a href="#list">목차로 이동</a>
+</h4>
 
 - 도커 허브에 업로드 된 이미지 목록  
 `CI/CD` 관련: jenkins-server, ansible-server, deploy-server  
@@ -281,7 +298,12 @@ CMD ["/usr/sbin/init" "systemctl" "start" "sshd"]
 ```
 <br><br>
 
+
 <h2 id="real">현재 가용 중인 서비스 구성도</h2>
+
+<h4 align="right">
+	<a href="#list">목차로 이동</a>
+</h4>
 
 - AWS EC2 비용 관련 문제로 현재 로컬 PC에서 서비스중 입니다.
 - AWS Router53 비용만을 청구하고 있습니다.
@@ -291,6 +313,10 @@ CMD ["/usr/sbin/init" "systemctl" "start" "sshd"]
 <br><br>
 
 <h2 id="swagger">현재 서비스 중인 스웨거 API 문서 목록</h2>
+
+<h4 align="right">
+	<a href="#list">목차로 이동</a>
+</h4>
 
 user-service: https://benefits.completed0728.site/user-service/swgger-ui/index.html
 
@@ -306,7 +332,12 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swgge
 
 <br><br>
 
+
 <h2 id="swagger-cors">스웨거를 위한 CORS 허용 (스웨거 도메인)</h2>
+
+<h4 align="right">
+	<a href="#list">목차로 이동</a>
+</h4>
 
 - gateway-service(CORS): 스웨거 도메인이 gateway-service 도메인 자체이므로  
   해당 도메인의 CORS 작업은 없습니다.  
@@ -323,6 +354,10 @@ seller-service, supervisor-service 들의 CORS 설정은
 
 <h2 id="front-cors">프론트엔드(SPA)를 위한 COSR 허용 (로컬 도메인)</h2>
 
+<h4 align="right">
+	<a href="#list">목차로 이동</a>
+</h4>
+
 - gateway-service(CORS): http://localhost:3001  
 게이트웨이는 `http://localhost:3001` 도메인 CORS 허용 했습니다.
 - user-service, order-service,  
@@ -338,7 +373,12 @@ seller-service, supervisor-service 들의 CORS 설정은
 
 <br><br>
 
+
 <h2 id="erd">ERD 다이어그램</h2>
+
+<h4 align="right">
+	<a href="#list">목차로 이동</a>
+</h4>
 
 - 데이터베이스를 각 서비스의 기능과 가장 관련된 기준으로 나누었습니다.
 
@@ -346,6 +386,10 @@ seller-service, supervisor-service 들의 CORS 설정은
 
 
 <h2 id="erd-relation">ERD 관계 맵핑</h2>
+
+<h4 align="right">
+	<a href="#list">목차로 이동</a>
+</h4>
 
 - 관계의 강결합 적인 문제를 고려하여 데이터베이스에는 실제로는 맵핑을 하지 않았으며 논리적인 맵핑 관계 입니다.
 
