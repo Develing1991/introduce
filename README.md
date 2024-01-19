@@ -402,7 +402,7 @@ seller-service, supervisor-service 들의 CORS 설정은
 
 <br><br>
 
-<h2 id="after">이 후 업데이트 사항</h2>
+<h2 id="after">이 후 업데이트 사항</h2>
 
 <h4 align="right">
 	<a href="#list">목차로 이동</a>
