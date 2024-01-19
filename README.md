@@ -28,11 +28,11 @@
 	<a href="#list">목차로 이동</a>
 </h4>
 
-이 프로젝트 비즈니스 모델은 B2C입니다.  
+**이 프로젝트 비즈니스 모델은 B2C입니다.**  
 
-Java언어 기반의 SpringBoot Application을 사용 했습니다.  
+**Java언어 기반의 SpringBoot Application을 사용 했습니다.**  
 
-MicroService Architecture(MSA)로 구성한 프로젝트 입니다.  
+**MicroService Architecture(MSA)로 구성한 프로젝트 입니다.**  
 
 <br>
 
