@@ -3,23 +3,126 @@
 
 <h2 id="list">목차</h2>
 
-- <a href="#intro">마이크로 서비스 구성도</a>
-- <a href="#service">서비스 핵심 기능</a>
-- <a href="#auth">API 인증(Authentication) 및 인가(Authorization)</a>
-- <a href="#spec">공통 응답 스펙</a>
-- <a href="#cicd">CI/CD 파이프라인 구성도</a>
-- <a href="#docker-hub">Docker Hub</a>
-- <a href="#real">현재 가용 중인 서비스 구성도</a>
-- <a href="#swagger">현재 서비스 중인 스웨거 API 문서 목록</a>
-- <a href="#swagger-cors">스웨거를 위한 CORS 허용 (스웨거 도메인)</a>
-- <a href="#front-cors">프론트엔드(SPA)를 위한 COSR 허용 (로컬 도메인)</a>
-- <a href="#erd">ERD 다이어그램</a>
-- <a href="#erd-relation">ERD 관계 맵핑</a>
-- <a href="#after">이 후 업데이트 사항</a>
+- <a href="#intro">🗿 소개</a>
+
+- <a href="#micro-structure">📔 마이크로 서비스 구성도</a>
+- <a href="#service">🧑‍💻 서비스 핵심 기능</a>
+- <a href="#auth">🔐 API 인증(Authentication) 및 인가(Authorization)</a>
+- <a href="#spec">📝 공통 응답 스펙</a>
+- <a href="#cicd">🔅 CI/CD 파이프라인 구성도</a>
+- <a href="#docker-hub">💿 Docker Hub</a>
+- <a href="#real">📗 현재 가용 중인 서비스 구성도</a>
+- <a href="#swagger">✅ 현재 서비스 중인 스웨거 API 문서 목록</a>
+- <a href="#swagger-cors">🟡 스웨거를 위한 CORS 허용 (스웨거 도메인)</a>
+- <a href="#front-cors">🟡 프론트엔드(SPA)를 위한 COSR 허용 (로컬 도메인)</a>
+- <a href="#erd">📚 ERD 다이어그램</a>
+- <a href="#erd-relation">📚 ERD 논리적 연관 관계 맵핑</a>
+- <a href="#after">📌 이 후 업데이트 사항</a>
+
+
+<br><br><br><br>
+
+<h2 id="intro">🗿 소개</h2>
+
+<h4 align="right">
+	<a href="#list">목차로 이동</a>
+</h4>
+
+이 프로젝트 비즈니스 모델은 B2C입니다.  
+
+Java언어 기반의 SpringBoot Application을 사용 했습니다.  
+
+MicroService Architecture(MSA)로 구성한 프로젝트 입니다.  
 
 <br>
 
-<h2 id="intro">마이크로 서비스 구성도</h2>
+서비스의 목록  
+- user-service  
+- order-service  
+- product-service  
+- review-service  
+- seller-service  
+- supervisor-service  
+
+
+
+<br>
+
+서비스를 이용할 수 있는 사용자의 모델과 권한은  
+
+관리자(Supervisor), 판매자(Seller), 사용자(User) 로 구성 됩니다.
+
+<br>
+
+**관리자**  
+> 카테고리, 브랜드를 등록할 수 있습니다.  
+상품을 등록할 수 있는 최소 단위인 아이템을 생성할 수 있습니다.  
+테스트를 위해 현재 관리자는 모든 API기능 동작 권한을 갖고 있습니다.
+
+**판매자**  
+> 판매자의 계정은 관리자만이 등록할 수 있습니다.    
+판매자는 로그인을 할 수 있습니다.  
+판매자는 관리자가 등록한 아이템을 기반으로 아이템을 조회하여 상품을 등록할 수 있습니다.  
+판매자는 자신이 등록한 상품의 주문 요청 건을 조회할 수 있습니다.  
+판매자는 주문을 거절 또는 수락을 할 수 있습니다.  
+
+**사용자**  
+> 사용자는 회원가입과 로그인을 할 수 있습니다.  
+회원가입과 동시에 사용자 프로필은 기본적으로 생성 됩니다.  
+사용자는 프로필을 수정할 수 있습니다.  
+사용자는 주소를 등록할 수 있습니다. (주소는 최대 3개 제한)  
+사용자는 상품을 조회 하고 주문을 할 수 있습니다.  
+주문이 완료된 건에 한하여 리뷰를 작성할 수 있습니다.  
+
+<br>
+
+<h3> ⛔ 개인정보 수집 동의 및 보호 관련한 기능 제외</h3>
+
+개인정보 수집 동의 및 보호 관련한 문제가 발생할 수 있을 점을 고려하여   
+**현재 사용자, 판매자, 관리자 등록 수정 등의 개인 정보 수집 가능성이 있는 기능의 Writable한 API 기능은 제공하지 않습니다.**  
+해당 기능이 동작하지 않는 점 양해의 말씀을 드립니다.🙈    
+
+<br>
+
+**👉 테스트가 가능한 별도의 테스트 계정이 제공 됩니다.**  
+
+<br>
+
+**유저 테스트 계정**    
+
+```text
+email: testUser1@aaa.com
+password: uP@sswr0d!11
+```
+```text
+email: testUser2@bbb.com
+password: uP@sswr0d!22
+```
+```text
+email: testUser3@ccc.com
+password: uP@sswr0d!33
+```
+
+<br>
+
+**판매자 테스트 계정**  
+
+```text
+email: testSeller1@aaa.com
+password: slP@sswr0d!11
+```
+
+<br>
+
+**관리자 테스트 계정**    
+
+```text
+email: testSuper1@aaa.com
+password: spP@sswr0d!11
+```
+<br><br>
+
+<h2 id="micro-structure">📔 마이크로 서비스 구성도</h2>
 
 <h4 align="right">
 	<a href="#list">목차로 이동</a>
@@ -47,7 +150,7 @@
 
 <br><br>
 
-<h2 id="service">서비스 핵심 기능</h2>
+<h2 id="service">🧑‍💻 서비스 핵심 기능</h2>
 
 <h4 align="right">
 	<a href="#list">목차로 이동</a>
@@ -55,35 +158,45 @@
 
 ### user-service 예시
 - 모든 서비스는 `gateway-service`의 `IP`를 확인하고 해당 `IP`에서 들어오는 요청만 허용합니다.
-  
-![](https://velog.velcdn.com/images/develing1991/post/3aa65189-ec24-42be-a638-3721203103f1/image.png)
+
+![](https://velog.velcdn.com/images/develing1991/post/f84e179f-f6fc-4436-a677-b31143ade323/image.png)
+
 
 <br>
 
 ### order-service, product-service
-- `order-service`와 `product-service`는 대량의 트래픽 동시성 처리를 위해  
-카프카 큐잉 메시지 브로커를 사용했습니다.  
+- `order-service`와 `product-service`는 대량의 트래픽 동시성 처리를 위해 카프카 큐잉 메시지 브로커를 사용했습니다.  
 
-- `order-service`에서 주문을 받고 orders 테이블에 주문의 상태를 `ORDER`로 등록합니다.  
+- `order-service`에서 주문을 받아 주문 데이터를 `orders` 테이블에 등록하며 주문의 상태를 `ORDER`로 등록합니다.  
 카프카 토픽으로 `order`란 이름의 토픽과 주문에 대한 데이터를 생산합니다.  
 
 - `product-service`에서는 `order`란 이름의 토픽을 소비합니다.  
-`order`토픽의 주문 데이터를 가져와서 products 테이블에 해당 상품의 수량을 업데이트 합니다.  
+`order`토픽의 주문 데이터를 가져와서 `products` 테이블에 해당 상품의 수량을 업데이트 합니다.  
 업데이트 전에 수량을 먼저 조회 하고 수량이 부족하면 `orderReject`라는 이름의 토픽에 해당 주문의 반려시킬 고유 값 데이터를 포함하여 생산합니다.  
 수량 감소 업데이트도 진행하지 않습니다.  
 
 - `order-service`에서 `orderReject`라는 이름의 토픽을 소비합니다.  
-`orderReject`토픽의 주문에 대한 고유 값 데이터로 주문을 조회 하고 해당 주문의 상태를 `REJECT`상태로 업데이트 합니다.
+`orderReject`토픽의 주문에 대한 고유 값 데이터로 주문을 조회 하고 해당 `orders` 테이블의 주문 데이터의 상태를 `REJECT`상태로 업데이트 합니다.  
 
-![](https://velog.velcdn.com/images/develing1991/post/b2ab3c9d-8f82-4f1c-80cf-7a589c21f91b/image.png)
+<br>
+
+**Orders table**  
+
+![](https://velog.velcdn.com/images/develing1991/post/1831df72-9889-409f-88b6-da431aecb3f4/image.png)
+
+<br>
+
+**Products table**  
+
+![](https://velog.velcdn.com/images/develing1991/post/fc5593d8-801f-43be-8e9d-c61d8858892a/image.png)
 
 
 <br>
 
 ### config-server
 
-- `keytool`을 사용해서 RSA 알고리즘의 키 쌍을 생성하고 각 각의 서명 값을 추출하여 공개키와 비밀키로 사용할 각 각의 키에 인증서를 넣어 사용할 키 쌍을 구성 했습니다.   
-- 그리고 나서 `config-server`에서 불러오는 설정 평문 데이터 값은 `비밀키의 공개키 인증서`로 암호화 하였습니다.  
+- `keytool`을 사용해서 RSA 알고리즘의 `공개키`, `비밀키`를 생성 했습니다.   
+- 그리고 나서 `config-server`에서 불러오는 설정 평문 데이터 값은 `비밀키가 갖고있는 공개키 인증서`로 암호화 하였습니다.  
 - `config-server`에서 갖고 있는 RSA 알고리즘의 `공개키`를 통해 복호화 합니다.
 - `config-server`에서 가져오는 설정 값들이 변경 되면 `Spring Clous Bus`와 `Rabbitmq`를 조합한 `/actuator/refreshbus`API를 POST 요청하여 갱신 합니다.
 
@@ -93,7 +206,7 @@
 
 ### review-service
 
-- 특정 주문에 대한 리뷰 작성은 `Feign Client` 통신을 이용하여 orders 테이블에 review의 id를 업데이트 하는 방식으로 구성 했습니다.
+- 특정 주문에 대한 리뷰 작성은 `Feign Client` 통신을 이용하여 `orders` 테이블에 `review`의 `id`를 업데이트 하는 방식으로 구성 했습니다.
 
 ![](https://velog.velcdn.com/images/develing1991/post/c338836a-120c-41b3-8783-851b54039105/image.png)
 
@@ -101,35 +214,35 @@
 
 ### 모니터링 분산 추적 zipkin
 
-- 마이크로 서비스의 요청 또는 통신 간의 장애 발생 지점 등을 모니터링 하기 위해 zipkin을 사용했습니다.
+- 마이크로 서비스의 요청 또는 통신 간의 장애 발생 지점 등을 모니터링 하기 위해 `zipkin`을 사용했습니다.
 
 ![](https://velog.velcdn.com/images/develing1991/post/114f2778-99ad-4db7-92c7-ed7909793abf/image.png)
 
 <br>
 
 ### 모니터링 지표 수집 Micrometer, Prometheus, Actuator
-- `Micrometer`, `Prometheus`, `Actuator`로 gateway-service로의 요청 횟수, 특정 API 요청 횟수와 같은 지표 데이터들을 수집합니다.
+- `Micrometer`, `Prometheus`, `Actuator`를 이용하여 `gateway-service`로의 요청 되는 횟수 또는 특정 API 요청 횟수와 같은 지표 데이터들을 수집합니다.
 
 ![](https://velog.velcdn.com/images/develing1991/post/afcbc49b-2fde-48de-a6a0-bc2c311ef262/image.png)
 
 <br>
 
 ### 모니터링 시각화 Grafana 
-- Micrometer, Prometheus, Actuator로 수집한 지표 데이터를 바탕으로  `Grafana`로 시각화 했습니다.
+- `Micrometer`, `Prometheus`, `Actuator`를 이용하여 수집한 지표 데이터를 바탕으로 `Grafana`로 시각화 하였습니다.
 
 ![](https://velog.velcdn.com/images/develing1991/post/66516e69-42ab-4e4b-b882-67730b68bb8d/image.png)
 
 <br><br>
 
 
-<h2 id="auth">API 인증(Authentication) 및 인가(Authorization)</h2>
+<h2 id="auth">🔐 API 인증(Authentication) 및 인가(Authorization)</h2>
 
 <h4 align="right">
 	<a href="#list">목차로 이동</a>
 </h4>
 
 ### 인증 방식 JWT - ( user-service, seller-service, supervisor-service - login )
-- JWT을 사용해 인증과 인가하는 방식을 사용했습니다.
+- **Json Web Token(JWT)**을 사용해 인증과 인가하는 방식을 사용 하였습니다.
 - `user-service`, `seller-service`, `supervisor-service`는 토큰 발행 시에  
 페이로드의 권한 역할을 지정하는 `role`이라는 이름의 키 값에 각 각 `USER`, `SELLER`, `SUPERVISOR`로 발행 합니다.
 
@@ -137,32 +250,33 @@
 
 <br>
 
-### 인가 방식 1 - ( gateway-service - filter )
+### 인가 방식 - ( gateway-service - filter )
 
-- 로그인을 제외한 모든 요청과 허용은 `gateway-service`에서만 이루어지므로  
-  `gateway-service`에서 토큰이 유효한가를 검증함과 동시에 요청 된 `API`에 해당 토큰이 적절한 권한을 가지고 있는지도 페이로드를 통해 확인합니다.
+-  모든 요청의 허용은 `gateway-service`에서만 이루어 집니다.    
+  `gateway-service`에서 토큰이 유효한가를 검증함과 동시에  
+   요청 된 `API`에 해당 토큰이 적절한 권한을 가지고 있는지도 페이로드를 통해 확인 합니다.
   
 ![](https://velog.velcdn.com/images/develing1991/post/aff84d24-6ca5-4810-9b9a-903f5c09fc66/image.png)
 
 
 <br>
 
-### 인가 방식 2 - ( 각 마이크로 서비스 ) 예시 - user-service
-- 각 각의 마이크로 서비스에서는 
-
+### 인가 방식 - ( 각 마이크로 서비스 ) 예시 - user-service
+- 
   만약 유효한 토큰임과 적절한 권한을 가진 토큰이라는 것이 `gateway-service`에서 검증 되었다 하더라도  
   자신의 정보를 조회, 수정, 삭제하는 종류의 API같은 경우에는 오직 자신만 가능해야 하므로
+
+  해당 서비스에서는 추가 검증을 진행합니다.  
+  각 서비스에 등록된 `AOP` 페이로드를 검증 하는 로직을 통해 자신 이외의 요청은 차단 됩니다. (`@UserSelfRole` 어노테이션 하단 이미지 예시)
   
-  각 서비스에 등록된 `AOP` 페이로드를 검증 하는 로직을 통해 자신 이외의 요청은 차단됩니다. (`@UserSelfRole` 어노테이션 하단 이미지 예시)
-  
-  모든 API가 해당 검증 로직을 거쳐야 하는 것이 아니므로 `AOP`기능을 사용했습니다.  
+  모든 API가 해당 검증 로직을 거쳐야 하는 것이 아니므로 `AOP`기능과 어노테이션을 활용 하였습니다.  
 
 ![](https://velog.velcdn.com/images/develing1991/post/d62e4713-633c-474a-bfe6-527297e3d834/image.png)
 
 <br><br>
 
 
-<h2 id="spec">공통 응답 스펙</h2>
+<h2 id="spec">📝 공통 응답 스펙</h2>
 
 <h4 align="right">
 	<a href="#list">목차로 이동</a>
@@ -187,13 +301,13 @@
 <br><br>
 
 
-<h2 id="cicd">CI/CD 파이프라인 구성도</h2>
+<h2 id="cicd">🔅 CI/CD 파이프라인 구성도</h2>
 
 <h4 align="right">
 	<a href="#list">목차로 이동</a>
 </h4>
 
-- 배포 자동화를 위해 파이프라인을 구성 했습니다.
+- 배포 자동화를 위해 파이프라인을 구성 하였습니다.
 
 ![](https://velog.velcdn.com/images/develing1991/post/c708b244-8431-4910-bc66-c7ec2edcee51/image.png)
 
@@ -221,7 +335,7 @@
 	-> 깃 허브의 `deploy` 이름의 브랜치에서 코드를 읽어오고 빌드를 진행 합니다.  
   -> 빌드 된 결과물(jar, source code)을 `delivery-docker-server`로 전달 합니다.  
     
-2. `jenkins-server`에서 `ansible-server`로 배포를 진행할 `user-service`의 playbook.yml을 실행합니다.
+2. `jenkins-server`에서 `ansible-server`로 배포를 진행할 `user-service`의 playbook.yml을 실행 합니다.
 3. `user-service/delivery-playbook.yml` 실행합니다. (image build, push, prune)
 4. `user-service/deploy-playbook.yml` 실행합니다. (image pull, container run)
 
@@ -230,7 +344,7 @@
 <br><br>
 
 
-<h2 id="docker-hub">Docker Hub</h2>
+<h2 id="docker-hub">💿 Docker Hub</h2>
 
 <h4 align="right">
 	<a href="#list">목차로 이동</a>
@@ -244,7 +358,7 @@
 - 도커 허브 리포지토리 주소: https://hub.docker.com/repositories/completed0728  
 `CI/CD` 관련 이미지들은 현재 사용 중인 컨테이너들을 다시 이미지화 하지 않았습니다.  
 각 각의 서버 구성에 맞게 패키지가 설치되는 초기 상태 이미지 입니다.  
- -> jenkins-server에도 해당 깃 허브에 접근할 수 있는 권한의 토큰이 포함되고 docker-server에는 도커 허브의 이미지를 push, pull권한의 토큰이 포함되기 때문입니다.
+ -> jenkins-server에도 해당 깃 허브에 접근할 수 있는 권한의 토큰이 포함되고 docker-server에는 도커 허브의 이미지를 push, pull권한의 토큰이 포함되기 때문 입니다.
 
 ### Dockerfile 예시 (docker-server)
 ```yml
@@ -300,20 +414,21 @@ CMD ["/usr/sbin/init" "systemctl" "start" "sshd"]
 <br><br>
 
 
-<h2 id="real">현재 가용 중인 서비스 구성도</h2>
+<h2 id="real">📗 현재 가용 중인 서비스 구성도</h2>
 
 <h4 align="right">
 	<a href="#list">목차로 이동</a>
 </h4>
 
-- AWS EC2 비용 관련 문제로 현재 로컬 PC에서 서비스중 입니다.
-- AWS Router53 비용만을 청구하고 있습니다.
+- AWS의 EC2 비용 관련 문제로 현재 로컬 PC에서 서비스중 입니다.
+- AWS의 Router53 비용만을 청구하고 있습니다.
 
 ![](https://velog.velcdn.com/images/develing1991/post/f3249ecb-dc13-4027-be59-3579414e1fba/image.png)
 
 <br><br>
 
-<h2 id="swagger">현재 서비스 중인 스웨거 API 문서 목록</h2>
+
+<h2 id="swagger">✅ 현재 서비스 중인 스웨거 API 문서 목록</h2>
 
 <h4 align="right">
 	<a href="#list">목차로 이동</a>
@@ -334,7 +449,7 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swgge
 <br><br>
 
 
-<h2 id="swagger-cors">스웨거를 위한 CORS 허용 (스웨거 도메인)</h2>
+<h2 id="swagger-cors">🟡 스웨거를 위한 CORS 허용 (스웨거 도메인)</h2>
 
 <h4 align="right">
 	<a href="#list">목차로 이동</a>
@@ -346,25 +461,25 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swgge
 user-service, order-service,  
 product-service, review-service,  
 seller-service, supervisor-service 들의 CORS 설정은    
-`https://benefits.completed0728.site` 도메인, `http://localhost:3001` 도메인을 허용 했습니다.
+`https://benefits.completed0728.site` 도메인, `http://localhost:3001` 도메인을 허용 하였습니다.
 
 ![](https://velog.velcdn.com/images/develing1991/post/f04c9f8b-3e9b-4a49-ac79-58ff94befd53/image.png)
 
 <br><br>
 
 
-<h2 id="front-cors">프론트엔드(SPA)를 위한 COSR 허용 (로컬 도메인)</h2>
+<h2 id="front-cors">🟡 프론트엔드(SPA)를 위한 COSR 허용 (로컬 도메인)</h2>
 
 <h4 align="right">
 	<a href="#list">목차로 이동</a>
 </h4>
 
-- gateway-service(CORS): http://localhost:3001  
-게이트웨이는 `http://localhost:3001` 도메인 CORS 허용 했습니다.
+- gateway-service(CORS): `http://localhost:3001`  
+게이트웨이는 `http://localhost:3001` 도메인 CORS 허용 하였습니다.
 - user-service, order-service,  
 product-service, review-service,  
 seller-service, supervisor-service 들의 CORS 설정은   
-`http://localhost:3001` 도메인을 CORS 허용 했습니다.  
+`http://localhost:3001` 도메인을 CORS 허용 하였습니다.  
 - localhost:3001번으로 실행 후 API요청
 - 요청 API 주소 예시(GET):  https://benefits.completed0728.site/user-service/open-api/users/1
 
@@ -375,7 +490,7 @@ seller-service, supervisor-service 들의 CORS 설정은
 <br><br>
 
 
-<h2 id="erd">ERD 다이어그램</h2>
+<h2 id="erd">📚 ERD 다이어그램</h2>
 
 <h4 align="right">
 	<a href="#list">목차로 이동</a>
@@ -386,30 +501,33 @@ seller-service, supervisor-service 들의 CORS 설정은
 ![](https://velog.velcdn.com/images/develing1991/post/0601d52a-c4ab-4ed1-b89f-f745036d67b8/image.png)
 
 
-<h2 id="erd-relation">ERD 관계 맵핑</h2>
+<h2 id="erd-relation">📚 ERD 논리적 연관 관계 맵핑</h2>
 
 <h4 align="right">
 	<a href="#list">목차로 이동</a>
 </h4>
 
-- 관계의 강결합 적인 문제를 고려하여 데이터베이스에는 실제로는 맵핑을 하지 않았으며 논리적인 맵핑 관계 입니다.
+- 관계의 강한 결합적 문제를 고려하여 데이터베이스에는 실제로는 연관 관계를 설정 하지 않았으며 논리적인 관계 입니다.
 
 ![](https://velog.velcdn.com/images/develing1991/post/df90c347-6e66-4002-8f5a-a3628a1cee86/image.png)
 
-- ORM의 Entity 관계에서만 맵핑을 진행 하였습니다.
+- ORM의 Entity 관계에서만 설정을 진행 하였습니다.
+- 같은 데이터베이스 내의 테이블 끼리만 연관 관계를 설정 하였습니다.
 
 ![](https://velog.velcdn.com/images/develing1991/post/58db0275-e8b3-4566-824c-ec504ba64b7d/image.png)
 
 <br><br>
 
-<h2 id="after">이 후 업데이트 사항</h2>
+<h2 id="after">📌 이 후 업데이트 사항</h2>
 
 <h4 align="right">
 	<a href="#list">목차로 이동</a>
 </h4>
 
 - user-service를 제외한 다른 마이크로 서비스들 미구현 된 AOP 검증 로직 추가
-- Resilience4J circuitbreaker 추가
+- 공통 코드 common-service로 분리 메이븐 업로드 또는 jar로 패키징 후 import로 사용
+- 인증 관련 기능 로직 auth-service로 분리
 - oauth 추가
 - payment-service 추가
+- Resilience4J circuitbreaker 추가
 - 프론트 알림을 위한 SSE(Server Sent Events)기능 추가
