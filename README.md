@@ -644,21 +644,16 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swagg
 
 ### gateway-service
 - org.springframework.cloud:spring-cloud-starter-gateway
-- io.jsonwebtoken:jjwt-api
-- io.jsonwebtoken:jjwt-impl
-- io.jsonwebtoken:jjwt-jackson
 
 ### user-service
 - org.springframework.boot:spring-boot-starter-web
 - org.springframework.boot:spring-boot-starter-security
 - org.springframework.boot:spring-boot-starter-data-jpa
 - org.springframework.boot:spring-boot-starter-validation
-- org.springframework.kafka:spring-kafka
 - io.jsonwebtoken:jjwt-api
 - io.jsonwebtoken:jjwt-impl
 - io.jsonwebtoken:jjwt-jackson
 - com.mysql:mysql-connector-j
-- org.springdoc:springdoc-openapi-starter-webmvc-ui
   
 ### user-service, order-service, product-service
 - org.springframework.kafka:spring-kafka
