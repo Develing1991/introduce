@@ -20,6 +20,7 @@
 - <a href="#front-cors">🟡 프론트엔드(SPA)를 위한 COSR 허용 (로컬 도메인)</a>
 - <a href="#erd">📚 ERD 다이어그램</a>
 - <a href="#erd-relation">📚 ERD 논리적 연관 관계 맵핑</a>
+- <a href="#dependencies">🛠️서비스 개발에 사용 된 핵심 의존성 목록</a>
 - <a href="#after">📌 이 후 업데이트 사항</a>
 
 
@@ -619,6 +620,47 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swagg
 - ORM의 Entity 관계에서만 설정을 진행 하였습니다.
 
 ![](https://velog.velcdn.com/images/develing1991/post/58db0275-e8b3-4566-824c-ec504ba64b7d/image.png)
+
+<br><br><br>
+
+<h2 id="dependencies">🛠️서비스 개발에 사용 된 핵심 의존성 목록</h2>
+
+<h4 align="right">
+	<a href="#list">목차로 이동</a>
+</h4>
+
+**서비스 마다 특징이 부각 되는 의존성 목록 입니다.**
+
+### naming-server
+- org.springframework.cloud:spring-cloud-starter-netflix-eureka-server
+
+### config-server
+- org.springframework.cloud:spring-cloud-config-server
+
+### gateway-service
+- org.springframework.cloud:spring-cloud-starter-gateway
+- io.jsonwebtoken:jjwt-api
+- io.jsonwebtoken:jjwt-impl
+- io.jsonwebtoken:jjwt-jackson
+
+### user-service
+- org.springframework.boot:spring-boot-starter-web
+- org.springframework.boot:spring-boot-starter-security
+- org.springframework.boot:spring-boot-starter-data-jpa
+- org.springframework.boot:spring-boot-starter-validation
+- org.springframework.kafka:spring-kafka
+- io.jsonwebtoken:jjwt-api
+- io.jsonwebtoken:jjwt-impl
+- io.jsonwebtoken:jjwt-jackson
+- com.mysql:mysql-connector-j
+- org.springdoc:springdoc-openapi-starter-webmvc-ui
+
+### order-service, product-service
+- org.springframework.kafka:spring-kafka
+
+### review-service
+- org.springframework.cloud:spring-cloud-starter-openfeign
+
 
 <br><br><br>
 
