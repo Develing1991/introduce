@@ -80,7 +80,7 @@
 
 ![](https://velog.velcdn.com/images/develing1991/post/16eb9dab-10b8-44a4-b774-065c94940d8b/image.png)
 
-<br>
+<br><br>
 
 <h3> ⛔ 개인정보 수집 동의 및 보호 관련한 기능 제외</h3>
 
