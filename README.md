@@ -363,9 +363,9 @@ password: spP@sswr0d!11
   
 - `ansible-server`: 오픈 소스 IaC(Infrastructure as Code) 솔루션인 `ansible`을 사용 하였습니다.
   
-  	`delivery`와 `deploy`에 대한 명령을 실행 하는 `playbook.yml` 파일을 가지고 있습니다.
+  	-> `delivery`와 `deploy`에 대한 명령을 실행 하는 `playbook.yml` 파일을 가지고 있습니다.
   
-- `docker-server`: CD 개념을 담당하는 `delivery`와 `deploy` 서버 입니다.
+- `docker-server`: CD 개념을 담당하는 `delivery`와 `deploy` 도커 서버 입니다.
 
 ![](https://velog.velcdn.com/images/develing1991/post/c708b244-8431-4910-bc66-c7ec2edcee51/image.png)
 
