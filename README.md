@@ -184,16 +184,21 @@ password: spP@sswr0d!11
 ### order-service, product-service
 - `order-service`와 `product-service`는 대량의 트래픽 동시성 처리를 위해 카프카 큐잉 메시지 브로커를 사용했습니다.  
 
-- `order-service`에서 주문을 받아 주문 데이터를 `orders` 테이블에 등록하며 주문의 상태를 `ORDER`로 등록합니다.  
-카프카 토픽으로 `order`란 이름의 토픽과 주문에 대한 데이터를 생산합니다.  
+- `order-service`에서 주문을 받아 주문 데이터를 `orders` 테이블에 등록하며 주문의 상태를 `ORDER`로 등록합니다.
+  
+	카프카 토픽으로 `order`란 이름의 토픽과 주문에 대한 데이터를 생산합니다.  
 
-- `product-service`에서는 `order`란 이름의 토픽을 소비합니다.  
-`order`토픽의 주문 데이터를 가져와서 `products` 테이블에 해당 상품의 수량을 업데이트 합니다.  
-업데이트 전에 수량을 먼저 조회 하고 수량이 부족하면 `orderReject`라는 이름의 토픽에 해당 주문의 반려시킬 고유 값 데이터를 포함하여 생산합니다.  
-수량 감소 업데이트도 진행하지 않습니다.  
+- `product-service`에서는 `order`란 이름의 토픽을 소비합니다.
+  
+	`order`토픽의 주문 데이터를 가져와서 `products` 테이블에 해당 상품의 수량을 업데이트 합니다.  
 
-- `order-service`에서 `orderReject`라는 이름의 토픽을 소비합니다.  
-`orderReject`토픽의 주문에 대한 고유 값 데이터로 주문을 조회 하고 해당 `orders` 테이블의 주문 데이터의 상태를 `REJECT`상태로 업데이트 합니다.  
+	업데이트 전에 수량을 먼저 조회 하고 수량이 부족하면 `orderReject`라는 이름의 토픽에 해당 주문의 반려시킬 고유 값 데이터를 포함하여 생산합니다.  
+
+	수량 감소 업데이트도 진행하지 않습니다.  
+
+- `order-service`에서 `orderReject`라는 이름의 토픽을 소비합니다.
+
+	`orderReject`토픽의 주문에 대한 고유 값 데이터로 주문을 조회 하고 해당 `orders` 테이블의 주문 데이터의 상태를 `REJECT`상태로 업데이트 합니다.  
 
 <br>
 
@@ -212,14 +217,15 @@ password: spP@sswr0d!11
 
 ### config-server
 
-- `keytool`을 사용해서 RSA 알고리즘의 `공개키`, `비밀키`를 생성 했습니다.   
-- 그리고 나서 `config-server`에서 불러오는 설정 평문 데이터 값은 `비밀키가 갖고있는 공개키 인증서`로 암호화 하였습니다.  
+- `keytool`을 사용해서 RSA 알고리즘의 `공개키`, `비밀키`를 생성 했습니다.
+  
+- `config-server`에서 불러오는 설정 평문 데이터 값은 `비밀키가 갖고있는 공개키 인증서`로 암호화 하였습니다.  
 - `config-server`에서 갖고 있는 RSA 알고리즘의 `공개키`를 통해 복호화 합니다.  
 - `config-server`에서 가져오는 설정 값들이 변경 되면 새로운 구성 정보로 업데이트 하기 위하여
   
-  `Spring Clous Bus`와 `Rabbitmq`를 조합한 `Event Bus` 기능을 사용해서
+  	`Spring Clous Bus`와 `Rabbitmq`를 조합한 `Event Bus` 기능을 사용해서
   
-  `/actuator/refreshbus`API를 POST 요청하여 데이터를 갱신 합니다.  
+  	`/actuator/refreshbus`API를 POST 요청하여 데이터를 갱신 합니다.  
 
 <br>
 
@@ -267,7 +273,10 @@ password: spP@sswr0d!11
 ### 인증 방식 JWT - ( user-service, seller-service, supervisor-service - login )
 - **Json Web Token(JWT)** 을 사용해 인증과 인가하는 방식을 사용 하였습니다.
 - `user-service`, `seller-service`, `supervisor-service`는 토큰 발행 시에  
-페이로드의 권한 역할을 지정하는 `role`이라는 이름의 키 값에 각 각 `USER`, `SELLER`, `SUPERVISOR`로 발행 합니다.
+
+	페이로드의 권한 역할을 지정하는 `role`이라는 이름의 키 값에 각 각 `USER`, `SELLER`, `SUPERVISOR`로 발행 합니다.
+
+  	토큰 발행에 사용 되는 토큰의 시크릿 키는 모두 다르게 구성 됩니다.
 
 ![](https://velog.velcdn.com/images/develing1991/post/b30f4ae2-711b-4231-86e2-5fceb82b196b/image.png)
 
@@ -277,13 +286,13 @@ password: spP@sswr0d!11
 
 -  모든 요청의 허용은 `gateway-service`에서만 이루어 집니다.
     
-  `gateway-service`에서 토큰이 유효한가를 검증함과 동시에  
+  	`gateway-service`에서 토큰이 유효한가를 검증함과 동시에  
   
-   요청 된 `API`에 해당 토큰이 적절한 권한을 가지고 있는지도 페이로드를 통해 확인 합니다.  
+   	요청 된 `API`에 해당 토큰이 적절한 권한을 가지고 있는지도 페이로드를 통해 확인 합니다.  
 
-   이 때 만약 페이로드의 값을 조작 하더라도  
+   	이 때 만약 페이로드의 값을 완벽히 조작 하더라도  
    
-   권한에 사용 된 시크릿 키가 모두 다르므로 토큰의 시그니쳐가 일치하지 않기 때문에 유효하지 않은 토큰으로 간주합니다.  
+   	토큰 발행에 사용 된 시크릿 키가 모두 다르므로 시그니쳐의 부분이 일치하지 않기 때문에 유효하지 않은 토큰으로 간주합니다.  
   
 ![](https://velog.velcdn.com/images/develing1991/post/aff84d24-6ca5-4810-9b9a-903f5c09fc66/image.png)
 
@@ -291,14 +300,13 @@ password: spP@sswr0d!11
 <br>
 
 ### 인가 방식 - ( 각 마이크로 서비스 ) 예시 - user-service
-- 
-  만약 유효한 토큰임과 적절한 권한을 가진 토큰이라는 것이 `gateway-service`에서 검증 되었다 하더라도  
-  자신의 정보를 조회, 수정, 삭제하는 종류의 API같은 경우에는 오직 자신만 가능해야 하므로
-
-  해당 서비스에서는 추가 검증을 진행합니다.  
-  각 서비스에 등록된 `AOP` 페이로드를 검증 하는 로직을 통해 자신 이외의 요청은 차단 됩니다. (`@UserSelfRole` 어노테이션 하단 이미지 예시)
+- 만약 유효한 토큰임과 적절한 권한을 가진 토큰이라는 것이 `gateway-service`에서 검증 되었다 하더라도
+    
+  	자신의 정보를 조회, 수정, 삭제하는 종류의 API같은 경우에는 오직 자신만 가능해야 하므로 해당 서비스에서는 추가 검증을 진행합니다.
+    
+  	각 서비스에 등록된 `AOP` 페이로드를 검증 하는 로직을 통해 자신 이외의 요청은 차단 됩니다. (하단 이미지 예시)
   
-  모든 API가 해당 검증 로직을 거쳐야 하는 것이 아니므로 `AOP`기능과 어노테이션을 활용 하였습니다.  
+  	모든 API가 해당 검증 로직을 거쳐야 하는 것이 아니므로 `AOP`기능과 어노테이션을 활용 하였습니다.  
 
 ![](https://velog.velcdn.com/images/develing1991/post/d62e4713-633c-474a-bfe6-527297e3d834/image.png)
 
@@ -368,14 +376,17 @@ password: spP@sswr0d!11
 <br>
 
 ### 파이프라인 동작 흐름 (예시 user-service)
-1. jenkins-server에서 `user-service`(job)을 직접 빌드 버튼 클릭 하거나    
-또는  깃 허브 `user-service`리포지토리의 `deploy` 브랜치에 코드 커밋, 푸시(Poll SCM)가 발생 하면    
-	-> 깃 허브의 `deploy` 이름의 브랜치에서 코드를 읽어오고 빌드를 진행 합니다.  
-  -> 빌드 된 결과물(jar, source code)을 `delivery-docker-server`로 전달 합니다.  
+1. jenkins-server에서 `user-service`(job)을 직접 빌드 버튼 클릭 하거나
+   
+	또는  깃 허브 `user-service`리포지토리의 `deploy` 브랜치에 코드 커밋, 푸시(Poll SCM)가 발생 하면
+
+	-> 깃 허브의 `deploy` 이름의 브랜치에서 코드를 읽어오고 빌드를 진행 합니다.
+   
+	  -> 빌드 된 결과물(jar, source code)을 `delivery-docker-server`로 전달 합니다.  
     
-2. `jenkins-server`에서 `ansible-server`로 배포를 진행할 `user-service`의 playbook.yml을 실행 합니다.
-3. `user-service/delivery-playbook.yml` 실행합니다. (image build, push, prune)
-4. `user-service/deploy-playbook.yml` 실행합니다. (image pull, container run)
+3. `jenkins-server`에서 `ansible-server`로 배포를 진행할 `user-service`의 playbook.yml을 실행 합니다.
+4. `user-service/delivery-playbook.yml` 실행합니다. (image build, push, prune)
+5. `user-service/deploy-playbook.yml` 실행합니다. (image pull, container run)
 
 ![](https://velog.velcdn.com/images/develing1991/post/966b2f09-c1e5-4770-b467-da929c91be17/image.png)
 
@@ -388,15 +399,23 @@ password: spP@sswr0d!11
 	<a href="#list">목차로 이동</a>
 </h4>
 
-- 도커 허브에 업로드 된 이미지 목록  
+- 도커 허브에 업로드 된 이미지 목록
+  
 `CI/CD` 관련: jenkins-server, ansible-server, deploy-server  
-`마이크로 서비스` 관련: <span style="color:red;">config-server를 제외한</span> 모든 마이크로 서비스 이미지  
+
+`마이크로 서비스` 관련: <span style="color:red;">config-server를 제외한</span> 모든 마이크로 서비스 이미지 
+
  -> config-server에는 구성 정보 파일을 읽어 들이는 공개키와 깃 허브 토큰이 포함되어 있어서 제외 하였습니다.
 
-- 도커 허브 리포지토리 주소: https://hub.docker.com/repositories/completed0728  
-`CI/CD` 관련 이미지들은 현재 사용 중인 컨테이너들을 다시 이미지화 하지 않았습니다.  
-각 각의 서버 구성에 맞게 패키지가 설치되는 초기 상태 이미지 입니다.  
- -> jenkins-server에도 해당 깃 허브에 접근할 수 있는 권한의 토큰이 포함되고 docker-server에는 도커 허브의 이미지를 push, pull권한의 토큰이 포함되기 때문 입니다.
+- 도커 허브 주소: https://hub.docker.com/search?q=completed0728
+  
+	`CI/CD` 관련 이미지들은 현재 사용 중인 컨테이너들을 다시 이미지화 하지 않았습니다.  
+
+	각 각의 서버 구성에 맞게 패키지가 설치되는 초기 상태 이미지 입니다.  
+
+	 -> jenkins-server에도 해당 깃 허브에 접근할 수 있는 권한의 토큰이 포함되고 docker-server에는 도커 허브의 이미지를 push, pull권한의 토큰이 포함되기 때문 입니다.
+
+<br>
 
 ### Dockerfile 예시 (docker-server)
 ```yml
@@ -459,6 +478,7 @@ CMD ["/usr/sbin/init" "systemctl" "start" "sshd"]
 </h4>
 
 - AWS의 EC2 비용 관련 문제로 현재 로컬 PC에서 서비스중 입니다.
+  
 - AWS의 Router53 비용만을 청구하고 있습니다.
 
 ![](https://velog.velcdn.com/images/develing1991/post/f3249ecb-dc13-4027-be59-3579414e1fba/image.png)
@@ -493,13 +513,12 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swagg
 	<a href="#list">목차로 이동</a>
 </h4>
 
-- gateway-service(CORS): 스웨거 도메인이 gateway-service 도메인 자체이므로  
-  해당 도메인의 CORS 작업은 없습니다.  
+- gateway-service(CORS): 스웨거 도메인이 gateway-service 도메인 자체이므로 해당 도메인의 CORS 작업은 없습니다.
+  
 - 각 마이크로 서비스들의 CORS  
-user-service, order-service,  
-product-service, review-service,  
-seller-service, supervisor-service 들의 CORS 설정은    
-`https://benefits.completed0728.site` 도메인, `http://localhost:3001` 도메인을 허용 하였습니다.
+	user-service, order-service, product-service, review-service, seller-service, supervisor-service 들의 CORS 설정은
+
+	`https://benefits.completed0728.site` 도메인, `http://localhost:3001` 도메인을 허용 하였습니다.
 
 ![](https://velog.velcdn.com/images/develing1991/post/f04c9f8b-3e9b-4a49-ac79-58ff94befd53/image.png)
 
@@ -512,16 +531,16 @@ seller-service, supervisor-service 들의 CORS 설정은
 	<a href="#list">목차로 이동</a>
 </h4>
 
-- gateway-service(CORS): `http://localhost:3001`  
-게이트웨이는 `http://localhost:3001` 도메인 CORS 허용 하였습니다.
-- user-service, order-service,  
-product-service, review-service,  
-seller-service, supervisor-service 들의 CORS 설정은   
-`http://localhost:3001` 도메인을 CORS 허용 하였습니다.  
-- localhost:3001번으로 실행 후 API요청
-- 요청 API 주소 예시(GET):  https://benefits.completed0728.site/user-service/open-api/users/1
+- gateway-service는 `http://localhost:3001` 도메인 주소의 CORS 허용 하였습니다.
 
-#### 요약: 프론트엔드(SPA) localhost에서 테스트 하시려면 3001번 포트로 실행 하시고 API를 요청 하시면 됩니다.
+- 각 마이크로 서비스들의 CORS 
+  	user-service, order-service, product-service, review-service, seller-service, supervisor-service 들의 CORS 설정은   
+
+	`http://localhost:3001` 도메인을 CORS 허용 하였습니다.  
+
+#### 프론트엔드(SPA) localhost에서 테스트 하시려면 3001번 포트로 실행 하시고 API를 요청 하시면 됩니다.
+
+- 요청 API 주소 예시(GET):  https://benefits.completed0728.site/user-service/open-api/users/1
 
 ![](https://velog.velcdn.com/images/develing1991/post/3c54bff4-eb2c-46d1-8cec-cddf071436f1/image.png)
 
@@ -545,7 +564,7 @@ seller-service, supervisor-service 들의 CORS 설정은
 	<a href="#list">목차로 이동</a>
 </h4>
 
-- 관계의 강한 결합적 문제를 고려하여 데이터베이스에는 실제로는 연관 관계를 설정 하지 않았으며 논리적인 관계 입니다.
+- 관계의 설정의 강한 결합 문제를 고려하여 데이터베이스에는 실제로는 연관 관계를 설정 하지 않았으며 논리적인 관계 입니다.
 
 ![](https://velog.velcdn.com/images/develing1991/post/df90c347-6e66-4002-8f5a-a3628a1cee86/image.png)
 
