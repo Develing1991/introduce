@@ -287,6 +287,15 @@ password: spP@sswr0d!11
 
 ![](https://velog.velcdn.com/images/develing1991/post/d62e4713-633c-474a-bfe6-527297e3d834/image.png)
 
+<br>
+
+👇 **본인 이외의 사용자가 자신의 정보를 조회하려 할 때의 예시입니다.** 👇
+
+<br>
+
+![](https://velog.velcdn.com/images/develing1991/post/218070b9-6c18-4e42-bc00-8aa020d022f1/image.png)
+
+
 <br><br>
 
 
