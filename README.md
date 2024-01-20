@@ -47,29 +47,31 @@
 - seller-service  
 - supervisor-service  
 
+<br><br>
 
+서비스를 이용할 수 있는 **사용자의 모델과 권한**은  
 
-<br>
-
-서비스를 이용할 수 있는 사용자의 모델과 권한은  
-
-관리자(Supervisor), 판매자(Seller), 사용자(User) 로 구성 됩니다.
+**관리자(Supervisor), 판매자(Seller), 사용자(User)** 로 구성 됩니다.
 
 <br>
 
-**관리자**  
+**관리자(Supervisor)**  
 > 카테고리, 브랜드를 등록할 수 있습니다.  
 상품을 등록할 수 있는 최소 단위인 아이템을 생성할 수 있습니다.  
 API의 인가 관련 테스트의 번거로움을 덜어 드리고자 현재 관리자는 모든 API기능 동작 권한을 갖고 있습니다.
 
-**판매자**  
+<br>
+
+**판매자(Seller)**  
 > 판매자의 계정은 관리자만이 등록할 수 있습니다.    
 판매자는 로그인을 할 수 있습니다.  
 판매자는 관리자가 등록한 아이템을 기반으로 아이템을 조회하여 상품을 등록할 수 있습니다.  
 판매자는 자신이 등록한 상품의 주문 요청 건을 조회할 수 있습니다.  
 판매자는 주문을 거절 또는 수락을 할 수 있습니다.  
 
-**사용자**  
+<br>
+
+**사용자(User)**  
 > 사용자는 회원가입과 로그인을 할 수 있습니다.  
 회원가입과 동시에 사용자 프로필은 기본적으로 생성 됩니다.  
 사용자는 프로필을 수정할 수 있습니다.  
@@ -77,7 +79,7 @@ API의 인가 관련 테스트의 번거로움을 덜어 드리고자 현재 관
 사용자는 상품을 조회 하고 주문을 할 수 있습니다.  
 주문이 완료된 건에 한하여 리뷰를 작성할 수 있습니다.  
 
-<br>
+<br><br>
 
 👇 **권한 관련한 기능들은 각 문서 상단에서 콤보박스로 확인하실 수 있습니다.** 👇
 
@@ -85,12 +87,14 @@ API의 인가 관련 테스트의 번거로움을 덜어 드리고자 현재 관
 
 ![](https://velog.velcdn.com/images/develing1991/post/16eb9dab-10b8-44a4-b774-065c94940d8b/image.png)
 
-<br><br>
+<br><br><br>
 
 <h3> ⛔ 개인정보 수집 동의 및 보호 관련한 기능 제외 ⛔ </h3>
 
 개인정보 수집 동의 및 보호 관련한 문제가 발생할 수 있을 점을 고려하여   
+
 **현재 사용자, 판매자, 관리자 등록 수정 등의 개인 정보 수집 가능성이 있는 기능의 Writable한 API 기능은 제공하지 않습니다.**  
+
 해당 기능의 제공을 제외한 점 양해의 말씀을 드립니다.🙈    
 
 <br>
@@ -137,7 +141,7 @@ password: spP@sswr0d!11
 ![](https://velog.velcdn.com/images/develing1991/post/4c7b1502-adda-431f-bea0-422371036922/image.png)
 
 
-<br><br>
+<br><br><br>
 
 <h2 id="micro-structure">📔 마이크로 서비스 구성도</h2>
 
@@ -165,7 +169,7 @@ password: spP@sswr0d!11
 - completed0728/seller-service:1.0
 - completed0728/supervisor-service:1.0
 
-<br><br>
+<br><br><br>
 
 <h2 id="service">🧑‍💻 서비스 핵심 기능</h2>
 
@@ -261,8 +265,7 @@ password: spP@sswr0d!11
 
 ![](https://velog.velcdn.com/images/develing1991/post/66516e69-42ab-4e4b-b882-67730b68bb8d/image.png)
 
-<br><br>
-
+<br><br><br>
 
 <h2 id="auth">🔐 API 인증(Authentication) 및 인가(Authorization)</h2>
 
@@ -319,8 +322,7 @@ password: spP@sswr0d!11
 ![](https://velog.velcdn.com/images/develing1991/post/218070b9-6c18-4e42-bc00-8aa020d022f1/image.png)
 
 
-<br><br>
-
+<br><br><br>
 
 <h2 id="spec">📝 공통 응답 스펙</h2>
 
@@ -344,7 +346,7 @@ password: spP@sswr0d!11
 ![](https://velog.velcdn.com/images/develing1991/post/ef16f964-7c0a-42f8-b4ee-c1c785df78c6/image.png)
 
 
-<br><br>
+<br><br><br>
 
 
 <h2 id="cicd">🔅 CI/CD 파이프라인 구성도</h2>
@@ -397,8 +399,7 @@ password: spP@sswr0d!11
 
 ![](https://velog.velcdn.com/images/develing1991/post/966b2f09-c1e5-4770-b467-da929c91be17/image.png)
 
-<br><br>
-
+<br><br><br>
 
 <h2 id="docker-hub">💿 Docker Hub</h2>
 
@@ -475,7 +476,8 @@ VOLUME ["/sys/fs/cgroup"]
 #ENTRYPOINT ["/usr/sbin/init" "systemctl" "start" "sshd"]
 CMD ["/usr/sbin/init" "systemctl" "start" "sshd"]
 ```
-<br><br>
+
+<br><br><br>
 
 
 <h2 id="real">📗 현재 가용 중인 서비스 구성도</h2>
@@ -490,7 +492,8 @@ CMD ["/usr/sbin/init" "systemctl" "start" "sshd"]
 
 ![](https://velog.velcdn.com/images/develing1991/post/f3249ecb-dc13-4027-be59-3579414e1fba/image.png)
 
-<br><br>
+
+<br><br><br>
 
 
 <h2 id="swagger">✅ 현재 서비스 중인 스웨거 API 문서 목록</h2>
@@ -511,7 +514,8 @@ seller-service: https://benefits.completed0728.site/seller-service/swagger-ui/in
 
 supervisor-service: https://benefits.completed0728.site/supervisor-service/swagger-ui/index.html
 
-<br><br>
+
+<br><br><br>
 
 
 <h2 id="swagger-cors">🟡 스웨거를 위한 CORS 허용 (스웨거 도메인)</h2>
@@ -529,7 +533,8 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swagg
 
 ![](https://velog.velcdn.com/images/develing1991/post/f04c9f8b-3e9b-4a49-ac79-58ff94befd53/image.png)
 
-<br><br>
+
+<br><br><br>
 
 
 <h2 id="front-cors">🟡 프론트엔드(SPA)를 위한 COSR 허용 (로컬 도메인)</h2>
@@ -551,7 +556,8 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swagg
 
 ![](https://velog.velcdn.com/images/develing1991/post/3c54bff4-eb2c-46d1-8cec-cddf071436f1/image.png)
 
-<br><br>
+
+<br><br><br>
 
 
 <h2 id="erd">📚 ERD 다이어그램</h2>
@@ -579,7 +585,7 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swagg
 
 ![](https://velog.velcdn.com/images/develing1991/post/58db0275-e8b3-4566-824c-ec504ba64b7d/image.png)
 
-<br><br>
+<br><br><br>
 
 <h2 id="after">📌 이 후 업데이트 사항</h2>
 
