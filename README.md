@@ -211,8 +211,14 @@ password: spP@sswr0d!11
 
 - `keytool`을 사용해서 RSA 알고리즘의 `공개키`, `비밀키`를 생성 했습니다.   
 - 그리고 나서 `config-server`에서 불러오는 설정 평문 데이터 값은 `비밀키가 갖고있는 공개키 인증서`로 암호화 하였습니다.  
-- `config-server`에서 갖고 있는 RSA 알고리즘의 `공개키`를 통해 복호화 합니다.
-- `config-server`에서 가져오는 설정 값들이 변경 되면 `Spring Clous Bus`와 `Rabbitmq`를 조합한 `/actuator/refreshbus`API를 POST 요청하여 갱신 합니다.
+- `config-server`에서 갖고 있는 RSA 알고리즘의 `공개키`를 통해 복호화 합니다.  
+- `config-server`에서 가져오는 설정 값들이 변경 되면 새로운 구성 정보로 업데이트 하기 위하여
+  
+  `Spring Clous Bus`와 `Rabbitmq`를 조합한 `Event Bus` 기능을 사용해서
+  
+  `/actuator/refreshbus`API를 POST 요청하여 데이터를 갱신 합니다.  
+
+<br>
 
 ![](https://velog.velcdn.com/images/develing1991/post/65232943-b199-4201-82c4-c34b089e6d2d/image.png)
 
@@ -266,9 +272,15 @@ password: spP@sswr0d!11
 
 ### 인가 방식 - ( gateway-service - filter )
 
--  모든 요청의 허용은 `gateway-service`에서만 이루어 집니다.    
+-  모든 요청의 허용은 `gateway-service`에서만 이루어 집니다.
+    
   `gateway-service`에서 토큰이 유효한가를 검증함과 동시에  
-   요청 된 `API`에 해당 토큰이 적절한 권한을 가지고 있는지도 페이로드를 통해 확인 합니다.
+  
+   요청 된 `API`에 해당 토큰이 적절한 권한을 가지고 있는지도 페이로드를 통해 확인 합니다.  
+
+   이 때 만약 페이로드의 값을 조작 하더라도  
+   
+   권한에 사용 된 시크릿 키가 모두 다르므로 토큰의 시그니쳐가 일치하지 않기 때문에 유효하지 않은 토큰으로 간주합니다.  
   
 ![](https://velog.velcdn.com/images/develing1991/post/aff84d24-6ca5-4810-9b9a-903f5c09fc66/image.png)
 
