@@ -151,6 +151,8 @@ password: spP@sswr0d!11
 
 ![](https://velog.velcdn.com/images/develing1991/post/53bd6ec2-2868-406b-8332-3b1530f98f7f/image.png)
 
+<br>
+
 ### Micro service - docker-compose 구성 목록 (이미지 파일)
 도커 네트워크 : benefits-network ( Subnet: 172.18.0.0/16, Gateway: 172.18.0.1 )  
 - zipkin:latest
@@ -164,6 +166,7 @@ password: spP@sswr0d!11
 - completed0728/config-server:1.0
 - completed0728/gateway-service:1.0
 - completed0728/user-service:1.0
+- completed0728/order-service:1.0
 - completed0728/product-service:1.0
 - completed0728/review-service:1.0
 - completed0728/seller-service:1.0
