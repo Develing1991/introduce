@@ -655,8 +655,11 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swagg
 - com.mysql:mysql-connector-j
 - org.springdoc:springdoc-openapi-starter-webmvc-ui
 
-### order-service, product-service
+### user-service, order-service, product-service
 - org.springframework.kafka:spring-kafka
+- 사용자의 로그인 기능 중에 마지막 로그인 시간 기록을 남기는
+  
+  	lastLoginAt필드의 데이터베이스 업데이트성의 쿼리를 비동기적인 코드로 사용하고 싶어서 user-service에도 kafka를 추가 했습니다.
 
 ### review-service
 - org.springframework.cloud:spring-cloud-starter-openfeign
