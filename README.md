@@ -76,6 +76,12 @@
 
 <br>
 
+**권한 관련한 기능들은 각 문서 상단에서 콤보박스로 확인하실 수 있습니다.**
+
+![](https://velog.velcdn.com/images/develing1991/post/27910809-a0a9-4823-a39c-c2f20bca3a76/image.png)
+
+<br>
+
 <h3> ⛔ 개인정보 수집 동의 및 보호 관련한 기능 제외</h3>
 
 개인정보 수집 동의 및 보호 관련한 문제가 발생할 수 있을 점을 고려하여   
@@ -124,6 +130,7 @@ email: testSuper1@aaa.com
 password: spP@sswr0d!11
 ```
 ![](https://velog.velcdn.com/images/develing1991/post/4c7b1502-adda-431f-bea0-422371036922/image.png)
+
 
 <br><br>
 
