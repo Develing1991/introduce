@@ -412,11 +412,11 @@ password: spP@sswr0d!11
 
 - 도커 허브에 업로드 된 이미지 목록
   
-`CI/CD` 관련: jenkins-server, ansible-server, deploy-server  
+	`CI/CD` 관련: `jenkins-server`, `ansible-server`, `deploy-server`  
 
-`마이크로 서비스` 관련: <span style="color:red;">config-server를 제외한</span> 모든 마이크로 서비스 이미지 
+	`마이크로 서비스` 관련: `config-server`를 제외한 모든 마이크로 서비스 이미지 
 
- -> config-server에는 구성 정보 파일을 읽어 들이는 공개키와 깃 허브 토큰이 포함되어 있어서 제외 하였습니다.
+ 	-> `config-server`에는 구성 정보 파일을 읽어 들이는 공개키와 깃 허브 토큰이 포함되어 있어서 제외 하였습니다.
 
 - 도커 허브 주소: https://hub.docker.com/search?q=completed0728
   
@@ -424,7 +424,9 @@ password: spP@sswr0d!11
 
 	각 각의 서버 구성에 맞게 패키지가 설치되는 초기 상태 이미지 입니다.  
 
-	 -> jenkins-server에도 해당 깃 허브에 접근할 수 있는 권한의 토큰이 포함되고 docker-server에는 도커 허브의 이미지를 push, pull권한의 토큰이 포함되기 때문 입니다.
+	 -> `jenkins-server`에도 해당 깃 허브에 접근할 수 있는 권한의 토큰이 포함되어 있기 때문입니다.
+  
+  	 -> `docker-server`에는 이미지를 push, pull권한의 도커 허브의 토큰이 포함되기 때문입니다.
 
 <br>
 
@@ -493,6 +495,8 @@ CMD ["/usr/sbin/init" "systemctl" "start" "sshd"]
   
 - AWS의 Router53 비용만을 청구하고 있습니다.
 
+<br>
+
 ![](https://velog.velcdn.com/images/develing1991/post/f3249ecb-dc13-4027-be59-3579414e1fba/image.png)
 
 
@@ -529,10 +533,13 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swagg
 
 - gateway-service(CORS): 스웨거 도메인이 gateway-service 도메인 자체이므로 해당 도메인의 CORS 작업은 없습니다.
   
-- 각 마이크로 서비스들의 CORS  
+- 각 마이크로 서비스
+  
 	user-service, order-service, product-service, review-service, seller-service, supervisor-service 들의 CORS 설정은
 
-	`https://benefits.completed0728.site` 도메인, `http://localhost:3001` 도메인을 허용 하였습니다.
+	`https://benefits.completed0728.site` 도메인 주소를 허용 하였습니다. 
+
+<br>
 
 ![](https://velog.velcdn.com/images/develing1991/post/f04c9f8b-3e9b-4a49-ac79-58ff94befd53/image.png)
 
@@ -546,16 +553,19 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swagg
 	<a href="#list">목차로 이동</a>
 </h4>
 
-- gateway-service는 `http://localhost:3001` 도메인 주소의 CORS 허용 하였습니다.
+- gateway-service는 `http://localhost:3001` 도메인 주소를 허용 하였습니다.
 
-- 각 마이크로 서비스들의 CORS 
+- 각 마이크로 서비스
+   
   	user-service, order-service, product-service, review-service, seller-service, supervisor-service 들의 CORS 설정은   
 
-	`http://localhost:3001` 도메인을 CORS 허용 하였습니다.  
+	`http://localhost:3001` 도메인 주소를 허용 하였습니다. 
 
 #### 프론트엔드(SPA) localhost에서 테스트 하시려면 3001번 포트로 실행 하시고 API를 요청 하시면 됩니다.
 
 - 요청 API 주소 예시(GET):  https://benefits.completed0728.site/user-service/open-api/users/1
+
+<br>
 
 ![](https://velog.velcdn.com/images/develing1991/post/3c54bff4-eb2c-46d1-8cec-cddf071436f1/image.png)
 
