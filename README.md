@@ -78,7 +78,7 @@
 
 **권한 관련한 기능들은 각 문서 상단에서 콤보박스로 확인하실 수 있습니다.**
 
-![](https://velog.velcdn.com/images/develing1991/post/27910809-a0a9-4823-a39c-c2f20bca3a76/image.png)
+![](https://velog.velcdn.com/images/develing1991/post/16eb9dab-10b8-44a4-b774-065c94940d8b/image.png)
 
 <br>
 
