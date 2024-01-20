@@ -31,6 +31,8 @@
 	<a href="#list">목차로 이동</a>
 </h4>
 
+### 프로젝트 소개
+
 **이 프로젝트 비즈니스 모델은 B2C입니다.**  
 
 **Java언어 기반의 SpringBoot Application을 사용 했습니다.**  
@@ -39,15 +41,22 @@
 
 <br>
 
-서비스의 목록  
-- user-service  
-- order-service  
-- product-service  
-- review-service  
-- seller-service  
-- supervisor-service  
+### 서비스 목록  
+`user-service`  
+
+`order-service`  
+
+`product-service`  
+
+`review-service`  
+
+`seller-service`  
+
+`supervisor-service`  
 
 <br>
+
+### 사용자 모델
 
 서비스를 이용할 수 있는 **사용자의 모델과 권한**은  
 
@@ -58,7 +67,7 @@
 **관리자(Supervisor)**  
 > 카테고리, 브랜드를 등록할 수 있습니다.  
 상품을 등록할 수 있는 최소 단위인 아이템을 생성할 수 있습니다.  
-API의 인가 관련 테스트의 번거로움을 덜어 드리고자 현재 관리자는 모든 API기능 동작 권한을 갖고 있습니다.
+API의 인가 관련 테스트의 번거로움을 덜고자 현재 관리자는 모든 API기능 동작 권한을 갖고 있습니다.
 
 <br>
 
@@ -89,9 +98,9 @@ API의 인가 관련 테스트의 번거로움을 덜어 드리고자 현재 관
 
 <br><br><br>
 
-<h3> ⛔ 개인정보 수집 동의 및 보호 관련한 기능 제공 제외 ⛔ </h3>
+<h3> ⛔ 개인정보가 기입 될 수 있는 기능 제공 제외 </h3>
 
-개인정보 수집 동의 및 보호 관련한 문제가 발생할 수 있을 점을 고려하여   
+개인정보 수집 및 보호 관련한 문제가 발생할 수 있을 점을 고려하여   
 
 **현재 사용자, 판매자, 관리자 등록 수정 등의 개인 정보 수집 가능성이 있는 기능의 Writable한 API 기능은 제공하지 않습니다.**  
 
