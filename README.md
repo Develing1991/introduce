@@ -439,17 +439,17 @@ CMD ["/usr/sbin/init" "systemctl" "start" "sshd"]
 	<a href="#list">목차로 이동</a>
 </h4>
 
-user-service: https://benefits.completed0728.site/user-service/swgger-ui/index.html
+user-service: https://benefits.completed0728.site/user-service/swagger-ui/index.html
 
-order-service: https://benefits.completed0728.site/order-service/swgger-ui/index.html
+order-service: https://benefits.completed0728.site/order-service/swagger-ui/index.html
 
-product-service: https://benefits.completed0728.site/product-service/swgger-ui/index.html
+product-service: https://benefits.completed0728.site/product-service/swagger-ui/index.html
 
-review-service: https://benefits.completed0728.site/review-service/swgger-ui/index.html
+review-service: https://benefits.completed0728.site/review-service/swagger-ui/index.html
 
-seller-service: https://benefits.completed0728.site/seller-service/swgger-ui/index.html
+seller-service: https://benefits.completed0728.site/seller-service/swagger-ui/index.html
 
-supervisor-service: https://benefits.completed0728.site/supervisor-service/swgger-ui/index.html
+supervisor-service: https://benefits.completed0728.site/supervisor-service/swagger-ui/index.html
 
 <br><br>
 
