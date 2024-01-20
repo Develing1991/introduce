@@ -103,6 +103,8 @@ email: testUser3@ccc.com
 password: uP@sswr0d!33
 ```
 
+![](https://velog.velcdn.com/images/develing1991/post/55a38ac5-726a-4dfd-ba7c-4ff47bb59f32/image.png)
+
 <br>
 
 **판매자 테스트 계정**  
@@ -111,6 +113,7 @@ password: uP@sswr0d!33
 email: testSeller1@aaa.com
 password: slP@sswr0d!11
 ```
+![](https://velog.velcdn.com/images/develing1991/post/99b2effa-ccf0-4d0b-94e4-0b14f7c7e0e0/image.png)
 
 <br>
 
@@ -120,6 +123,8 @@ password: slP@sswr0d!11
 email: testSuper1@aaa.com
 password: spP@sswr0d!11
 ```
+![](https://velog.velcdn.com/images/develing1991/post/4c7b1502-adda-431f-bea0-422371036922/image.png)
+
 <br><br>
 
 <h2 id="micro-structure">📔 마이크로 서비스 구성도</h2>
