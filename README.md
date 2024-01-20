@@ -198,7 +198,7 @@ password: spP@sswr0d!11
 <br>
 
 ### order-service, product-service
-- `order-service`와 `product-service`는 대량의 트래픽 동시성 처리를 위해 카프카 큐잉 메시지 브로커를 사용했습니다.  
+- `order-service`와 `product-service`는 트래픽의 동시성 처리를 위해 카프카 큐잉 메시지 브로커를 사용했습니다.  
 
 - `order-service`에서 주문을 받아 주문 데이터를 `orders` 테이블에 등록하며 주문의 상태를 `ORDER`로 등록합니다.
   
