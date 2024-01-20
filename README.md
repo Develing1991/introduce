@@ -47,7 +47,7 @@
 - seller-service  
 - supervisor-service  
 
-<br><br>
+<br>
 
 서비스를 이용할 수 있는 **사용자의 모델과 권한**은  
 
@@ -89,11 +89,13 @@ API의 인가 관련 테스트의 번거로움을 덜어 드리고자 현재 관
 
 <br><br><br>
 
-<h3> ⛔ 개인정보 수집 동의 및 보호 관련한 기능 제외 ⛔ </h3>
+<h3> ⛔ 개인정보 수집 동의 및 보호 관련한 기능 제공 제외 ⛔ </h3>
 
 개인정보 수집 동의 및 보호 관련한 문제가 발생할 수 있을 점을 고려하여   
 
 **현재 사용자, 판매자, 관리자 등록 수정 등의 개인 정보 수집 가능성이 있는 기능의 Writable한 API 기능은 제공하지 않습니다.**  
+
+**ex) 사용자 정보 등록, 수정, 판매자 정보 등록, 수정, 관리자 정보 등록, 수정**  
 
 해당 기능의 제공을 제외한 점 양해의 말씀을 드립니다.🙈    
 
@@ -244,6 +246,8 @@ password: spP@sswr0d!11
 
 - 특정 주문에 대한 리뷰 작성은 `Feign Client` 통신을 이용하여 `orders` 테이블에 `review`의 `id`를 업데이트 하는 방식으로 구성 했습니다.
 
+<br>
+
 ![](https://velog.velcdn.com/images/develing1991/post/c338836a-120c-41b3-8783-851b54039105/image.png)
 
 <br>
@@ -252,19 +256,27 @@ password: spP@sswr0d!11
 
 - 마이크로 서비스의 요청 또는 통신 간의 장애 발생 지점 등을 모니터링 하기 위해 `zipkin`을 사용했습니다.
 
+<br>
+
 ![](https://velog.velcdn.com/images/develing1991/post/114f2778-99ad-4db7-92c7-ed7909793abf/image.png)
 
 <br>
 
 ### 모니터링 지표 수집 Micrometer, Prometheus, Actuator
+
 - `Micrometer`, `Prometheus`, `Actuator`를 이용하여 `gateway-service`로의 요청 되는 횟수 또는 특정 API 요청 횟수와 같은 지표 데이터들을 수집합니다.
+
+<br>
 
 ![](https://velog.velcdn.com/images/develing1991/post/afcbc49b-2fde-48de-a6a0-bc2c311ef262/image.png)
 
 <br>
 
 ### 모니터링 시각화 Grafana 
+
 - `Micrometer`, `Prometheus`, `Actuator`를 이용하여 수집한 지표 데이터를 바탕으로 `Grafana`로 시각화 하였습니다.
+
+<br>
 
 ![](https://velog.velcdn.com/images/develing1991/post/66516e69-42ab-4e4b-b882-67730b68bb8d/image.png)
 
