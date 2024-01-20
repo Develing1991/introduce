@@ -354,6 +354,13 @@ password: spP@sswr0d!11
 </h4>
 
 - 배포 자동화를 위해 파이프라인을 구성 하였습니다.
+- `jenkins-server`: 지속적 통합(CI) 및 지속적 배포(CD) 오픈 소스 도구로 `jenkins`를 사용하였습니다.
+  
+- `ansible-server`: 오픈 소스 IaC(Infrastructure as Code) 솔루션인 `ansible`을 사용 하였습니다.
+  
+  	`delivery`와 `deploy`에 대한 명령을 실행 하는 `playbook.yml` 파일을 가지고 있습니다.
+  
+- `docker-server`: CD 개념을 담당하는 `delivery`와 `deploy` 서버 입니다.
 
 ![](https://velog.velcdn.com/images/develing1991/post/c708b244-8431-4910-bc66-c7ec2edcee51/image.png)
 
@@ -384,9 +391,9 @@ password: spP@sswr0d!11
    
 	  -> 빌드 된 결과물(jar, source code)을 `delivery-docker-server`로 전달 합니다.  
     
-3. `jenkins-server`에서 `ansible-server`로 배포를 진행할 `user-service`의 playbook.yml을 실행 합니다.
-4. `user-service/delivery-playbook.yml` 실행합니다. (image build, push, prune)
-5. `user-service/deploy-playbook.yml` 실행합니다. (image pull, container run)
+3. `jenkins-server`에서 `ansible-server`에게 배포를 진행 할 `user-service`의 `playbook.yml`의 실행 명령을 전달 합니다.
+4. `ansible-server`에서 `user-service/delivery-playbook.yml` 실행합니다. (image build, push, prune)
+5. `ansible-server`에서 `user-service/deploy-playbook.yml` 실행합니다. (image pull, container run)
 
 ![](https://velog.velcdn.com/images/develing1991/post/966b2f09-c1e5-4770-b467-da929c91be17/image.png)
 
