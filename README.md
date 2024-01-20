@@ -337,12 +337,15 @@ password: spP@sswr0d!11
 
 <br>
 
-👇 **본인 이외의 사용자가 자신의 정보를 조회하려 할 때의 예시입니다.** 👇
+👇 **본인 이외의 사용자가 자신의 정보를 조회하려 할 때의 예시입니다. `auth-user/users/{id}`** 👇
 
 <br>
 
 ![](https://velog.velcdn.com/images/develing1991/post/218070b9-6c18-4e42-bc00-8aa020d022f1/image.png)
 
+<br> 
+
+**또한 다른 사용자를 제한적인 정보로 조회할 수 있는 별도의 `open-api/users/{id}` API가 제공 됩니다.**
 
 <br><br><br>
 
