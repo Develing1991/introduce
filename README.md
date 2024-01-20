@@ -677,3 +677,5 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swagg
 - payment-service 추가
 - Resilience4J circuitbreaker 추가
 - 프론트 알림을 위한 SSE(Server Sent Events)기능 추가
+- CI/CD 추가적인 빌드 검증 sonarqube-server 추가
+- docker-server -> k8s-server 이관 해보기
