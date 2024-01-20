@@ -439,9 +439,9 @@ password: spP@sswr0d!11
 
 - 도커 허브 주소: https://hub.docker.com/search?q=completed0728
   
-	`CI/CD` 현재 구동 중인 컨테이너들을 다시 이미지화 하지는 않았습니다.  
+	현재 구동 중인 `CI/CD` 컨테이너들을 다시 이미지화 하지는 않았습니다.  
 
-	각 각의 서버 구성에 맞게 패키지가 설치되는 초기 상태 이미지 입니다.  
+	즉, 각 각의 서버 구성에 맞게 패키지만 설치되는 초기 상태 이미지 입니다.  
 
 	 -> `jenkins-server`에도 해당 깃 허브에 접근할 수 있는 권한의 토큰이 포함되어 있기 때문입니다.
   
@@ -449,7 +449,7 @@ password: spP@sswr0d!11
 
 <br>
 
-### Dockerfile 예시 (docker-server)
+### delivery-docker-server와 deploy-docker-server에서 사용 된 Dockerfile 예시
 ```yml
 FROM ubuntu
 
