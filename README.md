@@ -14,7 +14,7 @@
 - <a href="#spec">📝 공통 응답 스펙</a>
 - <a href="#cicd">🔅 CI/CD 파이프라인 구성도</a>
 - <a href="#docker-hub">💿 Docker Hub</a>
-- <a href="#real">📗 현재 서비스 중인 전체 서비스의 구성도</a>
+- <a href="#real">📗 서비스의 전체 구성도</a>
 - <a href="#swagger">✅ 현재 호스팅 중인 스웨거 API 문서 목록</a>
 - <a href="#swagger-cors">🟡 스웨거를 위한 CORS 허용 (스웨거 도메인)</a>
 - <a href="#front-cors">🟡 프론트엔드(SPA)를 위한 COSR 허용 (로컬 도메인)</a>
@@ -504,7 +504,7 @@ CMD ["/usr/sbin/init" "systemctl" "start" "sshd"]
 <br><br><br>
 
 
-<h2 id="real">📗 현재 가용 중인 서비스 구성도</h2>
+<h2 id="real">📗 서비스의 전체 구성도</h2>
 
 <h4 align="right">
 	<a href="#list">목차로 이동</a>
@@ -522,7 +522,7 @@ CMD ["/usr/sbin/init" "systemctl" "start" "sshd"]
 <br><br><br>
 
 
-<h2 id="swagger">✅ 현재 서비스 중인 스웨거 API 문서 목록</h2>
+<h2 id="swagger">✅ 현재 호스팅 중인 스웨거 API 문서 목록</h2>
 
 <h4 align="right">
 	<a href="#list">목차로 이동</a>
