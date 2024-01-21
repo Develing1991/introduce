@@ -76,6 +76,7 @@ API의 인가 관련 테스트의 번거로움을 덜고자 현재 관리자는 
 > 판매자의 계정은 관리자만이 등록할 수 있습니다.    
 판매자는 로그인을 할 수 있습니다.  
 판매자는 관리자가 등록한 아이템을 기반으로 아이템을 조회하여 상품을 등록할 수 있습니다.  
+판매자가 처음 등록한 상품의 상태는 REGISTERED(등록)이며 실제 판매 하고자 할 때 SELL(판매중) 또는 SOLD_OUT(품절), UNREGISTERED(해지)로 변경할 수 있습니다.  
 판매자는 자신이 등록한 상품의 주문 요청 건을 조회할 수 있습니다.  
 판매자는 주문을 거절 또는 수락을 할 수 있습니다.  
 
@@ -138,7 +139,11 @@ password: uP@sswr0d!33
 email: testSeller1@aaa.com
 password: slP@sswr0d!11
 ```
-![](https://velog.velcdn.com/images/develing1991/post/99b2effa-ccf0-4d0b-94e4-0b14f7c7e0e0/image.png)
+```text
+email: testSeller2@bbb.com
+password: slP@sswr0d!22
+```
+![](https://velog.velcdn.com/images/develing1991/post/f3928207-8a30-4475-a6a6-1c76ce41577b/image.png)
 
 <br>
 
@@ -190,7 +195,8 @@ password: spP@sswr0d!11
 	<a href="#list">목차로 이동</a>
 </h4>
 
-### user-service 예시
+### API 요청 허용
+
 - 모든 서비스는 `gateway-service`의 `IP`를 확인하고 해당 `IP`에서 들어오는 요청만 허용합니다.
 
 ![](https://velog.velcdn.com/images/develing1991/post/f84e179f-f6fc-4436-a677-b31143ade323/image.png)
@@ -198,8 +204,11 @@ password: spP@sswr0d!11
 
 <br>
 
-### order-service, product-service
-- `order-service`와 `product-service`는 트래픽의 동시성 처리를 위해 카프카 큐잉 메시지 브로커를 사용했습니다.  
+### 주문과 상품의 재고 감소 처리
+
+-  주문 서비스: `order-service`, 상품 서비스: `product-service`
+  
+- `order-service`와 `product-service`는 주문 처리 과정에서 트래픽 동시성 및 상품 재고 수량 처리의 정합성을 위해 카프카 큐 메시지 브로커를 사용했습니다.  
 
 - `order-service`에서 주문을 받아 주문 데이터를 `orders` 테이블에 등록하며 주문의 상태를 `ORDER`로 등록합니다.
   
@@ -230,7 +239,28 @@ password: spP@sswr0d!11
 ![](https://velog.velcdn.com/images/develing1991/post/fc5593d8-801f-43be-8e9d-c61d8858892a/image.png)
 
 
-<br>
+<br><br>
+
+### 주문 취소 처리에 대한 상품의 재고 증가 처리 
+
+- **주문**
+  
+	4번 상품 수량 2개, 5번 상품 수량 1개 주문
+
+![](https://velog.velcdn.com/images/develing1991/post/6732c67f-9a6b-4b36-9ef3-5bc844ec774d/image.png)
+
+<br><br>
+
+- **주문 취소**
+  
+	4번 상품 수량 2개, 5번 상품 수량 1개 복구
+  
+- 주문 취소 또한 `orderCancel`토픽의 이름으로 카프카 큐 메시지 브로커를 사용했습니다.  
+
+![](https://velog.velcdn.com/images/develing1991/post/677ceb58-73d0-4570-8804-364907f5499a/image.png)
+
+
+<br><br>
 
 ### config-server
 
