@@ -7,47 +7,24 @@
 - 한 주문당 구매할 상품  
 	4번 상품(길럭시북 그래파이트 15.6인치 코어 i5 - 512GB) - 2개  
 	5번 상품(김럭시북9 그려파이트 14인치 코어 16GB - 2TB - 인도우11 PRO) - 1개
-  
+
+
 ```javascript
-// 하나의 주문
-{
-    "order": {
-        "user_id": 1,
-        "amount": 4515000.0000
-    },
-    "deliveryAddress": {
-        "receiver": "김수령",
-        "address1": "주소1",
-        "address2": "주소2",
-        "zipcode": "123-23",
-        "phone": "01022223333",
-        "receive_type": "DOOR",
-        "receive_message": "문 앞"
-    },
-    "orderProducts" : [
-        {
-            "product_id": 4, // 4번 상품
-            "seller_id": 2,
-            "qty": 2,        // 수량 2개
-            "unit_price": 1178000.0000,
-            "total_price": 2356000.0000
-        },
-        {
-            "product_id": 5, // 5번 상품
-            "seller_id": 2,
-            "qty": 1,        // 수량 1개
-            "unit_price": 2159000.0000,
-            "total_price": 2159000.0000
-        }
-    ]
+// 예시
+주문1: {
+	주문정보: { ... },
+	주소: { ... },
+	상품리스트: [ { 4번 상품, 수량 2개 }, { 5번 상품, 수량 1개 } ]
 }
 ```
-
+  
 - 위 주문을 200건 동시에 요청할 계획 입니다.
+
 
 ![](https://velog.velcdn.com/images/develing1991/post/44b24925-e11d-4a3c-ad4a-285e7799cc08/image.png)
 
-<br>
+
+<br><br>
 
 ### 주문 테이블
 
