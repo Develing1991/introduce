@@ -678,15 +678,25 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swagg
 - springboot 3.2.1
 - jdk 17
 - gradle 8.5
+
+<br>
   
 ### naming-server
+
 - org.springframework.cloud:spring-cloud-starter-netflix-eureka-server
 
+<br>
+
 ### config-server
+
 - org.springframework.cloud:spring-cloud-config-server
+
+<br>
 
 ### gateway-service
 - org.springframework.cloud:spring-cloud-starter-gateway
+
+<br>
 
 ### user-service
 - org.springframework.boot:spring-boot-starter-web
@@ -697,15 +707,19 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swagg
 - io.jsonwebtoken:jjwt-impl
 - io.jsonwebtoken:jjwt-jackson
 - com.mysql:mysql-connector-j
-- 그 외 (prometheus, zipkin, etc...)
-  
+- 그 외 - (prometheus, zipkin, etc...)
+
+<br>
+
 ### user-service, order-service, product-service
 - org.springframework.kafka:spring-kafka
-- 그 외 (web, jpa, connector-j, security, prometheus, zipkin, etc...)
+- 그 외 - (web, jpa, connector-j, security, prometheus, zipkin, etc...)
+
+<br>
 
 ### review-service
 - org.springframework.cloud:spring-cloud-starter-openfeign
-- 그 외 (web, jpa, connector-j, security, prometheus, zipkin, etc...)
+- 그 외 - (web, jpa, connector-j, security, prometheus, zipkin, etc...)
 
 
 <br><br><br>
