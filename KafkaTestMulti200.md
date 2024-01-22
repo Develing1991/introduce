@@ -18,8 +18,9 @@
 }
 ```
   
-- 위 주문을 200건 동시에 요청할 계획 입니다.
+- 위의 주문을 200건 동시에 요청할 계획 입니다.
 
+<br>
 
 ![](https://velog.velcdn.com/images/develing1991/post/163b75f4-f614-4d7a-80f8-1cb5a8023a97/image.png)
 
