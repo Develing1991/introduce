@@ -138,3 +138,10 @@
 
 ![](https://velog.velcdn.com/images/develing1991/post/2f954d11-9323-40c9-992b-7d8d23c1f8b1/image.png)
 
+<br><br>
+
+## 이 후 고려 해볼만한 사항
+
+- `orderReject` 토픽을 소비하는 다른 `Queue System`을 추가하여   
+	프론트로 알림을 보내주는 `SSE(Server Sent Events)`기능이나   
+    	직접 사용자에게 전달 하는 다른 메시징 시스템을 활용하여 사용자에게 주문이 취소/반려 처리 되었다는 알림을 보낼 수 있겠습니다.
