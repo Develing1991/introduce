@@ -231,7 +231,7 @@ password: spP@sswr0d!11
 
 <br>
 
-**멀티 스레딩 동시 요청 테스트:** https://github.com/benefits-inc/introduce/blob/main/KafakTestCode.md
+**멀티 스레딩 동시 요청 테스트:** https://github.com/benefits-inc/introduce/blob/main/KafkaTestMulti200.md
 
 <br>
 
