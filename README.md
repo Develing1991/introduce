@@ -231,6 +231,10 @@ password: spP@sswr0d!11
 
 <br>
 
+### 멀티 스레딩 동시 요청 200건 테스트: https://github.com/benefits-inc/introduce/blob/main/KafakTestCode.md
+
+<br>
+
 **Orders table**  
 
 ![](https://velog.velcdn.com/images/develing1991/post/1831df72-9889-409f-88b6-da431aecb3f4/image.png)
