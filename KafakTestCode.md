@@ -140,7 +140,7 @@
 
 <br><br>
 
-## 이 후 고려 해볼만한 사항
+## 이 후 조치 사항
 
 - `orderReject` 토픽을 소비하는 다른 `Queue System`을 추가하여   
 	프론트로 알림을 보내주는 `SSE(Server Sent Events)`기능이나   
