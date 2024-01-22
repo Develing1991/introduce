@@ -229,9 +229,6 @@ password: spP@sswr0d!11
 
 	`orderReject`토픽의 주문에 대한 고유 값 데이터로 주문을 조회 하고 해당 `orders` 테이블의 주문 데이터의 상태를 `REJECT`상태로 업데이트 합니다.  
 
-<br>
-
-**멀티 스레딩 동시 요청 테스트:** https://github.com/benefits-inc/introduce/blob/main/KafkaTestMulti200.md
 
 <br>
 
@@ -245,6 +242,9 @@ password: spP@sswr0d!11
 
 ![](https://velog.velcdn.com/images/develing1991/post/fc5593d8-801f-43be-8e9d-c61d8858892a/image.png)
 
+<br>
+
+**멀티 스레딩 동시 요청 테스트:** https://github.com/benefits-inc/introduce/blob/main/KafkaTestMulti200.md
 
 <br><br>
 
