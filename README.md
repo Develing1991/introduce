@@ -697,12 +697,15 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swagg
 - io.jsonwebtoken:jjwt-impl
 - io.jsonwebtoken:jjwt-jackson
 - com.mysql:mysql-connector-j
+- 그 외 (prometheus, zipkin, etc...)
   
 ### user-service, order-service, product-service
 - org.springframework.kafka:spring-kafka
+- 그 외 (web, jpa, connector-j, security, prometheus, zipkin, etc...)
 
 ### review-service
 - org.springframework.cloud:spring-cloud-starter-openfeign
+- 그 외 (web, jpa, connector-j, security, prometheus, zipkin, etc...)
 
 
 <br><br><br>
