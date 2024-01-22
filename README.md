@@ -199,9 +199,11 @@ password: spP@sswr0d!11
 	<a href="#list">목차로 이동</a>
 </h4>
 
-### API 요청 허용
+### API 요청에 대한 허용
 
-- 모든 서비스는 `gateway-service`의 `IP`를 확인하고 해당 `IP`에서 들어오는 요청만 허용합니다.
+- 모든 마이크로 서비스는 `gateway-service`의 `IP`를 확인하고 해당 `IP`에서 들어오는 요청만 허용합니다.
+
+👇 **예시) user-service(SecurityConfig)** 👇
 
 ![](https://velog.velcdn.com/images/develing1991/post/f84e179f-f6fc-4436-a677-b31143ade323/image.png)
 
@@ -458,7 +460,7 @@ password: spP@sswr0d!11
 
 <br>
 
-### 파이프라인 동작 흐름 (예시 user-service)
+### 파이프라인 동작 흐름 - 예시) user-service
 1. jenkins-server에서 `user-service`(job)을 직접 빌드 버튼 클릭 하거나
    
 	또는  깃 허브 `user-service`리포지토리의 `deploy` 브랜치에 코드 커밋, 푸시(Poll SCM)가 발생 하면
@@ -503,8 +505,8 @@ password: spP@sswr0d!11
 
 ### delivery-docker-server와 deploy-docker-server에서 사용 된 Dockerfile 예시
 
-- 초기 계정: root
-- 초기 패스워드: benefits
+- 초기 root 계정: root
+- 초기 root 패스워드: benefits
 
 ```yml
 FROM ubuntu
