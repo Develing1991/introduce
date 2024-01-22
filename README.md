@@ -493,6 +493,10 @@ password: spP@sswr0d!11
 <br>
 
 ### delivery-docker-server와 deploy-docker-server에서 사용 된 Dockerfile 예시
+
+- 초기 계정: root
+- 초기 패스워드: benefits
+
 ```yml
 FROM ubuntu
 
