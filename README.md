@@ -10,6 +10,7 @@
 
 - <a href="#micro-structure">📔 마이크로 서비스 구성도</a>
 - <a href="#service">🧑‍💻 서비스 핵심 기능</a>
+- <a href="#test">🥕 kafka 동시 주문 테스트</a>
 - <a href="#auth">🔐 API 인증(Authentication) 및 인가(Authorization)</a>
 - <a href="#spec">📝 공통 응답 스펙</a>
 - <a href="#cicd">🔅 CI/CD 파이프라인 구성도</a>
@@ -242,9 +243,6 @@ password: spP@sswr0d!11
 
 ![](https://velog.velcdn.com/images/develing1991/post/fc5593d8-801f-43be-8e9d-c61d8858892a/image.png)
 
-<br>
-
-**멀티 스레딩 동시 요청 테스트:** https://github.com/benefits-inc/introduce/blob/main/KafkaTestMulti200.md
 
 <br><br>
 
@@ -326,6 +324,17 @@ password: spP@sswr0d!11
 <br>
 
 ![](https://velog.velcdn.com/images/develing1991/post/66516e69-42ab-4e4b-b882-67730b68bb8d/image.png)
+
+<br><br><br>
+
+
+<h2 id="test">🥕 kafka 동시 주문 테스트</h2> 
+
+<h4 align="right">
+	<a href="#list">목차로 이동</a>
+</h4>
+- 테스트 결과 👉 https://github.com/benefits-inc/introduce/blob/main/KafkaTestMulti200.md
+
 
 <br><br><br>
 
