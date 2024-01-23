@@ -32,7 +32,8 @@
 
 - 주문 테이블은 현재 어떤 주문도 받지 않은 상태 입니다.  
 
-![](https://velog.velcdn.com/images/develing1991/post/b93707cc-a46a-4350-8267-72cdc586fd30/image.png)
+![](https://velog.velcdn.com/images/develing1991/post/53f71138-5a5a-40d4-bbfd-2aa6ee4866ce/image.png)
+
 
 <br>
 
@@ -60,7 +61,9 @@
 
 - 200건의 동시 요청 **실행** 합니다.
 
-![](https://velog.velcdn.com/images/develing1991/post/d6b2b57e-ba21-424c-a1dd-f5142f62a2ab/image.png)
+
+![](https://velog.velcdn.com/images/develing1991/post/604ac478-e386-42a8-b254-39992473fe08/image.png)
+
 
 <br><br>
 
@@ -79,29 +82,32 @@
 
 ### 주문 테이블 들어온 전체 주문 수
 
-- **select count(*) form orders.orders;**
-
 - `200`건의 요청이  한 번에 들어왔을 때
 
 - 주문 요청 자체에서   
-	상품의 상태가 `SOLD_OUT`임을 확인 한 시점 `121`개  
-	즉 `121`개 지점 부터는 더 이상 요청 자체를 받지 않았습니다.  
+	상품의 상태가 `SOLD_OUT`임을 확인 한 시점 `102`개  
+	즉 `102`개 지점 부터는 더 이상 요청 자체를 받지 않았습니다.  
 
-![](https://velog.velcdn.com/images/develing1991/post/7c505e17-d0a9-4d21-b3a7-768be48ba7a0/image.png)
+![](https://velog.velcdn.com/images/develing1991/post/a2babe58-410c-4995-974d-47cb52666fad/image.png)
+
 
 <br>
 
-### 121건 주문의 처리 상태 확인
+### 102건 주문의 처리 상태 확인
 
-- **select count(*) form orders.orders;**
+- `4`번 상품의 `SOLD_OUT`된 시점이 2개씩 주문 * 15 = 0, 즉 `15`번 째 주문 이므로  
+	실제 주문 처리될 건은 `15`건, 반려(거절) 처리될 건은 `87`건으로 기대해 볼 수 있습니다.
 
-- 동시 다발로 들어온 주문 `121`건 중  
+- 동시 다발로 들어온 주문 `102`건 중  
 	실제 주문 받을 `15`건을 제외 하고   
 
-- 나머지 `106`건의 주문은 재고가 부족했기 때문에  
+- 나머지 `87`건의 주문은 재고가 부족 하였을 것이기 때문에  
 	카프카에 의해 반려 처리 중인 것을 확인합니다.  
 
-![](https://velog.velcdn.com/images/develing1991/post/58ef9839-f97f-40e3-b356-6a2f88b9d0a1/image.png)
+![](https://velog.velcdn.com/images/develing1991/post/7d77255a-8202-4483-8a90-c04e7abfd130/image.png)
+
+
+
 
 <br>
 
@@ -125,29 +131,32 @@
 
 - `200`건의 동시 요청 중 상품 상태가 `SOLD_OUT` 임을 확인 한 시점 부터 요청을 받지 않았으며   
 
-	그 사이엔 `121`건의 요청이 들어 왔습니다.  
+	그 사이엔 `102`건의 요청이 들어 왔습니다.  
 
 1. 최종 결과 주문을 정상적으로 받아야 하는 건수는 `15`건 입니다.  
 
-2. 최종 결과 재고 부족으로 주문을 카프카에 의해 반려 처리되어야 할 건수는 `106`건 입니다.
+2. 최종 결과 재고 부족으로 주문을 카프카에 의해 반려 처리 되어야 할 건수는 `87`건 입니다.
 
 3. 상품의 재고는 `4`번 상품 `0`개 - `SOLD_OUT`, `5`번 상품 `5`개 입니다.
 
 <br>
 
-### 15건 을 제외한 나머지 주문 106건은 전부 반려 처리 되었음을 확인합니다.
+### 15건 을 제외한 나머지 주문 87건은 전부 반려 처리 되었음을 확인합니다.
 
 <br>
 
-- **주문 테이블 - 주문 카운트, 주문 반려 카운트**
+- **주문 상품 테이블 - 주문 카운트, 주문 반려 카운트**
   
-![](https://velog.velcdn.com/images/develing1991/post/7df3217a-fc49-4b42-abdb-8722e47842aa/image.png)
+
+![](https://velog.velcdn.com/images/develing1991/post/13384729-1f63-4ea5-88c4-442085c006ba/image.png)
+
 
 <br>
 
-- **주문 테이블 - 전체**
+- **주문 - 전체**
   
-![](https://velog.velcdn.com/images/develing1991/post/2f954d11-9323-40c9-992b-7d8d23c1f8b1/image.png)
+![](https://velog.velcdn.com/images/develing1991/post/6b32825c-db31-45fd-bc74-98b37bb5351f/image.png)
+
 
 <br>
 
@@ -159,7 +168,7 @@
 
 ## 이 후 조치 사항
 
-- `orderReject` 토픽을 소비하는 다른 `Queue System`을 추가하여 반려된 `106`건의 주문에 대해서는  
+- `orderReject` 토픽을 소비하는 다른 `Queue System`을 추가하여 반려된 `87`건의 주문에 대해서는  
   
 	프론트로 알림을 보내주는 `SSE(Server Sent Events)`기능이나  
 
