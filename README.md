@@ -213,7 +213,7 @@ password: spP@sswr0d!11
 
 <br>
 
-### 주문과 상품의 재고 감소 처리
+### 주문과 상품
 
 -  주문 서비스: `order-service`, 상품 서비스: `product-service`
   
