@@ -681,9 +681,15 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swagg
   
 - 관계의 설정 시 강결합 문제를 고려하여 데이터베이스에는 실제로는 연관 관계를 설정 하지 않았습니다.
 
+<br>
+
 ![](https://velog.velcdn.com/images/develing1991/post/df835156-9d15-41cd-9e48-2ba0a68ecc60/image.png)
 
+<br>
+
 - ORM의 Entity 관계에서만 설정을 진행 하였습니다.
+
+<br>
 
 ![](https://velog.velcdn.com/images/develing1991/post/58db0275-e8b3-4566-824c-ec504ba64b7d/image.png)
 
