@@ -19,8 +19,7 @@
 - <a href="#swagger">✅ 현재 호스팅 중인 스웨거 API 문서 목록</a>
 - <a href="#swagger-cors">🟡 스웨거를 위한 CORS 허용 (스웨거 도메인)</a>
 - <a href="#front-cors">🟡 프론트엔드(SPA)를 위한 COSR 허용 (로컬 도메인)</a>
-- <a href="#erd">📚 ERD 다이어그램</a>
-- <a href="#erd-relation">📚 ERD 논리적 연관 관계 맵핑</a>
+- <a href="#erd-relation">📚 ERD 다이어그램 (논리적 연관 관계 맵핑)</a>
 - <a href="#dependencies">🛠️서비스 개발에 사용 된 핵심 의존성 목록</a>
 - <a href="#after">📌 이 후 업데이트 사항</a>
 
@@ -672,27 +671,17 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swagg
 
 <br><br><br>
 
-
-<h2 id="erd">📚 ERD 다이어그램</h2>
+<h2 id="erd-relation">📚 ERD 다이어그램 (논리적 연관 관계 맵핑)</h2>
 
 <h4 align="right">
 	<a href="#list">목차로 이동</a>
 </h4>
 
 - 데이터베이스를 각 서비스의 기능과 가장 관련된 기준으로 나누었습니다.
+  
+- 관계의 설정 시 강결합 문제를 고려하여 데이터베이스에는 실제로는 연관 관계를 설정 하지 않았습니다.
 
-![](https://velog.velcdn.com/images/develing1991/post/0601d52a-c4ab-4ed1-b89f-f745036d67b8/image.png)
-
-
-<h2 id="erd-relation">📚 ERD 논리적 연관 관계 맵핑</h2>
-
-<h4 align="right">
-	<a href="#list">목차로 이동</a>
-</h4>
-
-- 관계의 설정의 강한 결합 문제를 고려하여 데이터베이스에는 실제로는 연관 관계를 설정 하지 않았으며 논리적인 관계 입니다.
-
-![](https://velog.velcdn.com/images/develing1991/post/df90c347-6e66-4002-8f5a-a3628a1cee86/image.png)
+![](https://velog.velcdn.com/images/develing1991/post/df835156-9d15-41cd-9e48-2ba0a68ecc60/image.png)
 
 - ORM의 Entity 관계에서만 설정을 진행 하였습니다.
 
