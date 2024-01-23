@@ -1,7 +1,3 @@
-# 현재 서비스 OFF 상태 입니다.
-
-<br><br><br>
-
 # benefits (MSA 프로젝트)
 
 <h2 id="list">목차</h2>
