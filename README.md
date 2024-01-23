@@ -217,7 +217,9 @@ password: spP@sswr0d!11
 
 -  주문 서비스: `order-service`, 상품 서비스: `product-service`
   
-- `order-service`와 `product-service`는 주문 처리 과정에서 트래픽 동시성 및 상품 재고 수량 처리의 정합성을 위해 카프카 큐 메시지 브로커를 사용했습니다.  
+- `order-service`와 `product-service`는 주문 처리 과정에서 트래픽의 동시 요청 처리       
+
+  	즉, 상품 재고 수량 처리의 정합성을 위해 카프카 큐 메시지 브로커를 사용했습니다.  
 
 - `order-service`에서 주문을 받아 주문 데이터를 `orders` 테이블에 등록하며 주문의 상태를 `ORDER`로 등록합니다.
   
