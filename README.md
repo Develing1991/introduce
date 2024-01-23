@@ -253,9 +253,11 @@ password: spP@sswr0d!11
 
 ### 주문에 대한 상품의 재고 감소 처리 
 
+<br>
+
 - **주문**
   
-	4번 상품 수량 2개, 5번 상품 수량 1개 주문
+	`4`번 상품 수량 `2`개, `5`번 상품 수량 `1`개 주문
 
 ![](https://velog.velcdn.com/images/develing1991/post/6732c67f-9a6b-4b36-9ef3-5bc844ec774d/image.png)
 
@@ -263,13 +265,29 @@ password: spP@sswr0d!11
 
 ### 주문 취소 처리에 대한 상품의 재고 증가 처리 
 
-- **주문 취소**
-  
-	4번 상품 수량 2개, 5번 상품 수량 1개 복구
-  
-- 주문 취소 또한 `orderCancel`토픽의 이름으로 카프카 큐 메시지 브로커를 사용했습니다.  
+<br>
 
-![](https://velog.velcdn.com/images/develing1991/post/677ceb58-73d0-4570-8804-364907f5499a/image.png)
+- **사용자 주문 취소 요청(CANCELING)**
+
+	하나의 주문에서 개별 상품 `4`번 상품만 주문 취소 요청
+
+ 	상품 주문 번호 `1`번 취소 요청, 재고 수량 변화 없음
+
+<br>
+  
+![](https://velog.velcdn.com/images/develing1991/post/fb389b3a-5611-4e5d-8232-00f512aa27ad/image.png)
+
+<br>
+
+- **판매자 주문 취소(CANCEL)**
+
+	상품 주문 번호 `1`번 취소 확정  
+
+	`4`번 상품 재고 수량 `2`개 증가(복구)
+
+<br>
+
+![](https://velog.velcdn.com/images/develing1991/post/223b3b7e-64f0-44d9-803b-ba6bbfac8539/image.png)
 
 
 <br><br>
