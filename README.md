@@ -217,24 +217,18 @@ password: spP@sswr0d!11
 
 -  주문 서비스: `order-service`, 상품 서비스: `product-service`
   
-- `order-service`와 `product-service`는 주문 처리 과정에서 트래픽의 동시 요청 처리       
-
+- `order-service`와 `product-service`는 주문 처리 과정에서 트래픽의 동시 요청 처리를 위해         
   	즉, 상품 재고 수량 처리의 정합성을 위해 카프카 큐 메시지 브로커를 사용했습니다.  
 
-- `order-service`에서 주문을 받아 주문 데이터를 `orders` 테이블에 등록하며 주문의 상태를 `ORDER`로 등록합니다.
-  
+- `order-service`에서 주문을 받아 주문 데이터를 `orders` 테이블에 등록하며 주문의 상태를 `ORDER`로 등록합니다.  
 	카프카 토픽으로 `order`란 이름의 토픽과 주문에 대한 데이터를 생산합니다.  
 
-- `product-service`에서는 `order`란 이름의 토픽을 소비합니다.
-  
-	`order`토픽의 주문 데이터를 가져와서 `products` 테이블에 해당 상품의 수량을 업데이트 합니다.  
-
+- `product-service`에서는 `order`란 이름의 토픽을 소비합니다.  
+	`order`토픽의 주문 데이터를 가져와서 `products` 테이블에 해당 상품의 수량을 업데이트 합니다.   
 	업데이트 전에 수량을 먼저 조회 하고 수량이 부족하면 `orderReject`라는 이름의 토픽에 해당 주문의 반려시킬 고유 값 데이터를 포함하여 생산합니다.  
-
 	수량 감소 업데이트도 진행하지 않습니다.  
 
-- `order-service`에서 `orderReject`라는 이름의 토픽을 소비합니다.
-
+- `order-service`에서 `orderReject`라는 이름의 토픽을 소비합니다.  
 	`orderReject`토픽의 주문에 대한 고유 값 데이터로 주문을 조회 하고 해당 `orders` 테이블의 주문 데이터의 상태를 `REJECT`상태로 업데이트 합니다.  
 
 
@@ -253,7 +247,7 @@ password: spP@sswr0d!11
 
 <br><br>
 
-### 주문에 대한 상품의 재고 감소 처리 
+### 주문에 대한 상품의 재고 감소 처리 (하나의 주문, 여러 개 상품)
 
 <br>
 
@@ -265,7 +259,7 @@ password: spP@sswr0d!11
 
 <br><br>
 
-### 주문 취소 처리에 대한 상품의 재고 증가 처리 
+### 주문 취소 처리에 대한 상품의 재고 증가 처리 (개별 상품 취소)
 
 <br>
 
