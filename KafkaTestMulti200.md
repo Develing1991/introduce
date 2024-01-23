@@ -147,9 +147,7 @@
 
 - **주문 상품 테이블 - 주문 카운트, 주문 반려 카운트**
   
-
-![](https://velog.velcdn.com/images/develing1991/post/13384729-1f63-4ea5-88c4-442085c006ba/image.png)
-
+![](https://velog.velcdn.com/images/develing1991/post/f8303520-dce9-41ca-a64f-e4c8f9af0612/image.png)
 
 <br>
 
