@@ -118,17 +118,23 @@ API의 인가 관련 테스트의 번거로움을 덜고자 현재 관리자는 
 
 **유저 테스트 계정**    
 
-```text
-email: testUser1@aaa.com
-password: uP@sswr0d!11
+```javascript
+{
+  "email": "testUser1@aaa.com",
+  "password": "uP@sswr0d!11"
+}
 ```
-```text
-email: testUser2@bbb.com
-password: uP@sswr0d!22
+```javascript
+{
+  "email": "testUser2@bbb.com",
+  "password": "uP@sswr0d!22"
+}
 ```
-```text
-email: testUser3@ccc.com
-password: uP@sswr0d!33
+```javascript
+{
+  "email": "testUser3@ccc.com",
+  "password": "uP@sswr0d!33"
+}
 ```
 
 ![](https://velog.velcdn.com/images/develing1991/post/55a38ac5-726a-4dfd-ba7c-4ff47bb59f32/image.png)
@@ -137,13 +143,17 @@ password: uP@sswr0d!33
 
 **판매자 테스트 계정**  
 
-```text
-email: testSeller1@aaa.com
-password: slP@sswr0d!11
+```javascript
+{
+  "email": "testSeller1@aaa.com",
+  "password": "slP@sswr0d!11"
+}
 ```
-```text
-email: testSeller2@bbb.com
-password: slP@sswr0d!22
+```javascript
+{
+  "email": "testSeller2@bbb.com",
+  "password": "slP@sswr0d!22"
+}
 ```
 ![](https://velog.velcdn.com/images/develing1991/post/f3928207-8a30-4475-a6a6-1c76ce41577b/image.png)
 
@@ -151,9 +161,11 @@ password: slP@sswr0d!22
 
 **관리자 테스트 계정**    
 
-```text
-email: testSuper1@aaa.com
-password: spP@sswr0d!11
+```javascript
+{
+  "email": "testSuper1@aaa.com",
+  "password": "spP@sswr0d!11"
+}
 ```
 ![](https://velog.velcdn.com/images/develing1991/post/4c7b1502-adda-431f-bea0-422371036922/image.png)
 
