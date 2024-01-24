@@ -592,8 +592,7 @@ CMD ["/usr/sbin/init" "systemctl" "start" "sshd"]
 
 <br>
 
-![](https://velog.velcdn.com/images/develing1991/post/f3249ecb-dc13-4027-be59-3579414e1fba/image.png)
-
+![](https://velog.velcdn.com/images/develing1991/post/c6b3b07c-10ab-4bf3-ba24-2d72f2c2c92b/image.png)
 
 <br><br><br>
 
