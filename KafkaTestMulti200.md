@@ -168,7 +168,7 @@
 
 - `orderReject` 토픽을 소비하는 다른 `Queue System`을 추가하여 반려된 `87`건의 주문에 대해서는  
   
-	프론트로 알림을 보내주는 `SSE(Server Sent Events)`기능이나  
+	브라우저로 알림을 보내주는 `SSE(Server Sent Events)`기능이나  
 
   직접 사용자에게 전달 하는 다른 메시징 시스템을 활용하여     
   
