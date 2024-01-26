@@ -63,7 +63,7 @@
 
 **관리자(Supervisor)**  
 > 카테고리, 브랜드를 등록할 수 있습니다.  
-상품을 등록할 수 있는 최소 단위인 아이템을 생성할 수 있습니다.  
+상품을 등록할 수 있는 최소 단위인 아이템(인벤토리)을 생성할 수 있습니다.  
 API의 인가 관련 테스트의 번거로움을 덜고자 현재 관리자는 모든 API기능 동작 권한을 갖고 있습니다.
 
 <br>
@@ -774,6 +774,7 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swagg
 - 인증 관련 기능 로직 auth-service로 분리
 - oauth 추가
 - payment-service 추가
+- redis
 - Resilience4J circuitbreaker 추가
 - 사용자 주문 취소 건 알림을 위한 SSE(Server Sent Events)기능 추가
 - CI/CD 추가적인 빌드 검증 sonarqube-server 추가
