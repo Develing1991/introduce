@@ -367,7 +367,7 @@ API의 인가 관련 테스트의 번거로움을 덜고자 현재 관리자는 
 <h4 align="right">
 	<a href="#list">목차로 이동</a>
 </h4>
-- 테스트 결과 👉 https://github.com/benefits-inc/introduce/blob/main/KafkaTestMulti200.md
+- 테스트 결과 👉 https://github.com/benefits-inc/introduce/blob/main/test/KafkaTestMulti200.md
 
 
 <br><br><br>
