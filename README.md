@@ -317,7 +317,7 @@ API의 인가 관련 테스트의 번거로움을 덜고자 현재 관리자는 
 
 <br>
 
-![](https://velog.velcdn.com/images/develing1991/post/65232943-b199-4201-82c4-c34b089e6d2d/image.png)
+![](https://velog.velcdn.com/images/develing1991/post/fc53779d-eb64-465e-b873-f4bddaae19b1/image.png)
 
 <br>
 
