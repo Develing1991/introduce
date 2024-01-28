@@ -1,8 +1,8 @@
 todo list
 
 - 기능 추가에 따른 유즈케이스, 요구사항정의서 업데이트
-- redis (auth, cache, transaction, single thread) - slave, master (sentinel / master-replica) 구성 고민 ing..
-- product default sorting low price 
+- redis (auth, cache, transaction, single thread) - slave, master sentinel
+    -> product default sorting low price 
 - user-service를 제외한 다른 마이크로 서비스들 미구현 된 AOP 검증 로직 추가
 - 공통 코드 common-service로 분리 메이븐 업로드 또는 jar로 패키징 후 import로 사용
 - 인증 관련 기능 로직 auth-service로 분리
