@@ -10,8 +10,9 @@ todo list
     -> 로그아웃을 했다면 redis에 해당 키 토큰이 존재하므로 invalid한 token으로 응답 처리
     -> 불필요한 토큰이니 ttl 타임이 지나면 redis에서는 알아서 값이 삭제 됨  
     
-  ttl: accessExpireAt,
-    -> product default sorting low price   
+    -> 빠른 응답이 필요한 조회 성 로직  
+    -> kafka와의 연계  
+  
 - user-service를 제외한 다른 마이크로 서비스들 미구현 된 AOP 검증 로직 추가  
 - 공통 코드 common-service로 분리 메이븐 업로드 또는 jar로 패키징 후 import로 사용
 - 인증 관련 기능 로직 auth-service로 분리
