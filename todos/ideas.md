@@ -2,10 +2,11 @@ todo list
 
 - 기능 추가에 따른 유즈케이스, 요구사항정의서 업데이트
 - redis (auth, cache, transaction, single thread) - slave, master sentinel  
-    -> 로그아웃 기능 user-service, seller-service, supervisor-service 로그아웃 시 redisTemplate을 통해 redis-server의 redis에
-          Set 토큰 값 key, value, ttl은 decode token AccessExpiredAt, ttlRefreshExpiredAt - 각각 )  
-    -> 검증기능 gateway + redisTemplate (토큰 검증 앞 단에 get redis + token ) 확인 로직을 추가
-    -> 로그아웃을 했다면 redis에 해당 키 토큰이 존재하니 invalid한 token으로 응답 처리
+    -> 로그아웃 기능 user-service, seller-service, supervisor-service 로그아웃 시 redisTemplate을 통해 redis-server의 redis에  
+          access_token, refresh_token 키, 밸류 형태로 밀어넣기. 넣을 때 ttl 옵션은 각 토큰 decode 해서 expired 시간 셋팅  
+  
+    -> 검증기능 gateway + redisTemplate (토큰 검증 앞 단에 get redis + token ) 확인 로직을 추가  
+    -> 로그아웃을 했다면 redis에 해당 키 토큰이 존재하니 invalid한 token으로 응답 처리  
     
   ttl: accessExpireAt,
     -> product default sorting low price   
