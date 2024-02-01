@@ -1,7 +1,7 @@
 todo list
 
 - 기능 추가에 따른 유즈케이스, 요구사항정의서 업데이트
-- redis 구성 - slave, master sentinel  
+- redis 구성 - slave, master sentinel (스터디 ing..)    
 - redis 사용 - auth, cache, transaction 등등..  
     -> 로그아웃 기능 user-service, seller-service, supervisor-service 로그아웃 시 redisTemplate을 통해 redis-server의 redis에   
           access_token, refresh_token 키, 밸류 형태로 밀어넣기. 넣을 때 ttl 옵션은 각 토큰 decode 해서 expired 시간 셋팅 - 1시간, 12시간   
