@@ -779,5 +779,5 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swagg
 - Resilience4J circuitbreaker 추가
 - 사용자 주문 취소 건 알림을 위한 SSE(Server Sent Events)기능 추가
 - CI/CD 추가적인 빌드 검증 sonarqube-server 추가
-- 배포 서버 docker-server에서 k8s-server로 이관 해보기 (pod, deployments, services 개념 적용)
+- 배포 서버 docker-server에서 k8s-server로 이관 해보기 (pods, deployments, services 개념 적용)
 - 구체적인 프론트 기획/개발 - 마주하는 장애 대응 해보기
