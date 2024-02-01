@@ -1,7 +1,7 @@
 todo list
 
 - 기능 추가에 따른 유즈케이스, 요구사항정의서 업데이트
-- redis 구성 - slave, master sentinel (디테일 스터디 ing..)    
+- redis 구성 - slave, master sentinel (디테일 스터디 진행중)      
 - redis 사용 - auth, cache, transaction 등등..
     - 이전 적용 했던 내용 정리  
     -> 로그아웃 기능 user-service, seller-service, supervisor-service 로그아웃 시 redis-server의 redis에   
