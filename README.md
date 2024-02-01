@@ -769,6 +769,7 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swagg
 </h4>
 
 - <del>사용자 주문 취소와 판매자 주문 반려(거절)에 대한 재고 증감 - 동시성 처리 `orderCancel`</del>
+- 현재 redis관련 학습중 입니다.
 - user-service를 제외한 다른 마이크로 서비스들 미구현 된 AOP 검증 로직 추가
 - 공통 코드 common-service로 분리 메이븐 업로드 또는 jar로 패키징 후 import로 사용
 - 인증 관련 기능 로직 auth-service로 분리
@@ -779,3 +780,4 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swagg
 - 사용자 주문 취소 건 알림을 위한 SSE(Server Sent Events)기능 추가
 - CI/CD 추가적인 빌드 검증 sonarqube-server 추가
 - 배포 서버 docker-server에서 k8s-server로 이관 해보기
+- 구체적인 프론트 기획/개발 - 마주하는 장애 대응 해보기
