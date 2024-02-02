@@ -13,7 +13,6 @@ todo list
 
     - 생각 해볼 만한 것들  
     -> 빠른 응답이 필요한 조회 성 로직  
-    -> kafka와의 연계  
   
 - user-service를 제외한 다른 마이크로 서비스들 미구현 된 AOP 검증 로직 추가  
 - 공통 코드 common-service로 분리 메이븐 업로드 또는 jar로 패키징 후 import로 사용
