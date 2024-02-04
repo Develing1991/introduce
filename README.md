@@ -430,6 +430,12 @@ API의 인가 관련 테스트의 번거로움을 덜고자 현재 관리자는 
 
 **또한 다른 사용자를 제한적인 정보로 조회할 수 있는 별도의 `open-api/users/{id}` API가 제공 됩니다.**
 
+### 로그아웃 (redis)
+- 개발 중
+- 마스터(센티넬) + 슬레이브(센티넬) + 센티넬
+- /auth-user/logout -> gateway-service -> user-service.set.redis(accessToken || refreshToken, accessToken || refreshToken, tokenExpired-ttl)
+- /auth-user/something-api -> gateway-service.redis.get(accessToken).isPresent() ? invalidToken : authorization filter
+
 <br><br><br>
 
 <h2 id="spec">📝 공통 응답 스펙</h2>
