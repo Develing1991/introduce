@@ -438,7 +438,10 @@ API의 인가 관련 테스트의 번거로움을 덜고자 현재 관리자는 
 - /auth-user/logout -> gateway-service -> user-service.set.redis(accessToken || refreshToken, accessToken || refreshToken, tokenExpired-ttl)
 - /auth-user/something-api -> gateway-service.redis.get(accessToken).isPresent() ? invalidToken : authorization filter
 
-![](https://velog.velcdn.com/images/develing1991/post/a53346af-b820-4bfa-b2bb-672a34e4bc94/image.png)
+<br>
+
+![](https://velog.velcdn.com/images/develing1991/post/a87c89da-2bf3-4697-9fed-e05a9526319a/image.png)
+
 
 <br><br><br>
 
