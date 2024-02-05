@@ -619,7 +619,7 @@ CMD ["/usr/sbin/init" "systemctl" "start" "sshd"]
 
 <br>
 
-![](https://velog.velcdn.com/images/develing1991/post/c6b3b07c-10ab-4bf3-ba24-2d72f2c2c92b/image.png)
+![](https://velog.velcdn.com/images/develing1991/post/0ca8a98f-390c-4259-9193-24b16bea6fba/image.png)
 
 <br><br><br>
 
@@ -782,7 +782,7 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swagg
 </h4>
 
 - <del>사용자 주문 취소와 판매자 주문 반려(거절)에 대한 재고 증감 - 동시성 처리 `orderCancel`</del>
-- 현재 redis관련 학습중 입니다.
+- <del>redis 토큰 session 관리 </del>
 - user-service를 제외한 다른 마이크로 서비스들 미구현 된 AOP 검증 로직 추가
 - 공통 코드 common-service로 분리 메이븐 업로드 또는 jar로 패키징 후 import로 사용
 - 인증 관련 기능 로직 auth-service로 분리
