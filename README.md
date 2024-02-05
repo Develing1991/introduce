@@ -791,6 +791,7 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swagg
 - <del>사용자 주문 취소와 판매자 주문 반려(거절)에 대한 재고 증감 - 동시성 처리 `orderCancel`</del>
 - <del>redis 토큰 session 관리 </del>
 - QueryDsl, Jpql 둘 다 써보고 선택 (특정 서비스 골라서 jpa대신 MyBatis로 변경하기)
+- auto increment id는 고유 값 그 자체로 유지만 하고 대신 PFD0000001같이 직접 id 규칙 구상하기(시퀀스), 모든 연관 맵핑 제거 -> 직접 쿼리 작성
 - user-service를 제외한 다른 마이크로 서비스들 미구현 된 AOP 검증 로직 추가
 - 공통 코드 common-service로 분리 메이븐 업로드 또는 jar로 패키징 후 import로 사용
 - 인증 관련 기능 로직 auth-service로 분리
