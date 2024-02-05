@@ -748,6 +748,7 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swagg
 
 ### gateway-service
 - org.springframework.cloud:spring-cloud-starter-gateway
+- org.springframework.boot:spring-boot-starter-data-redis-reactive
 
 <br>
 
@@ -756,6 +757,7 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swagg
 - org.springframework.boot:spring-boot-starter-security
 - org.springframework.boot:spring-boot-starter-data-jpa
 - org.springframework.boot:spring-boot-starter-validation
+- org.springframework.boot:spring-boot-starter-data-redis-reactive
 - io.jsonwebtoken:jjwt-api
 - io.jsonwebtoken:jjwt-impl
 - io.jsonwebtoken:jjwt-jackson
