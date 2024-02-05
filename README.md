@@ -790,7 +790,6 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swagg
 - 인증 관련 기능 로직 auth-service로 분리
 - oauth 추가
 - payment-service 추가
-- redis
 - Resilience4J circuitbreaker 추가
 - 사용자 주문 취소 건 알림을 위한 SSE(Server Sent Events)기능 추가
 - CI/CD 추가적인 빌드 검증 sonarqube-server 추가
