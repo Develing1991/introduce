@@ -433,10 +433,12 @@ API의 인가 관련 테스트의 번거로움을 덜고자 현재 관리자는 
 <br> 
 
 ### 로그아웃 (redis)
-- 개발 중
-- 마스터(센티넬) + 슬레이브(센티넬) + 센티넬
-- /auth-user/logout -> gateway-service -> user-service.set.redis(accessToken || refreshToken, accessToken || refreshToken, tokenExpired-ttl)
-- /auth-user/something-api -> gateway-service.redis.get(accessToken).isPresent() ? invalidToken : authorization filter
+
+- 마스터 + 센티넬 / 슬레이브(replicaof) + 센티넬 / 센티넬
+- 로그아웃 시 redis에 더 이상 사용하지 않을 access, refresh토큰과 토큰의 만료시간을 ttl로 등록합니다.
+- gateway-service에서 redis에 접속하여 해당 토큰을 조회하여 로그아웃 토큰인지 확인 합니다.
+- 비록 해당 토큰이 실제론 유효할지라도 로그아웃 처리 했으므로 gateway-service에서 expired token으로 응답 처리합니다.
+- redis에 등록 된 토큰은 자신의 만료 시간으로 등록 된 ttl시간이 지나면 자동으로 삭제 됩니다.
 
 <br>
 
