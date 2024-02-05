@@ -728,6 +728,7 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swagg
 **서비스 마다 특징이 부각 되는 의존성 목록 입니다.**
 
 ### 공통
+- IDE: intellij community
 - springboot 3.2.1
 - jdk 17
 - gradle 8.5
