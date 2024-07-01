@@ -36,6 +36,8 @@
 
 **MicroService Architecture(MSA)로 구성한 프로젝트 입니다.**  
 
+**포트폴리오가 목적이기 때문에 비효율적 이지만 다양한 케이스의 코드를 예시로써 사용합니다.**
+
 <br>
 
 ### 서비스 목록  
@@ -63,7 +65,7 @@
 
 **관리자(Supervisor)**  
 > 카테고리, 브랜드를 등록할 수 있습니다.  
-상품을 등록할 수 있는 최소 단위인 아이템을 생성할 수 있습니다.  
+상품을 등록할 수 있는 최소 단위인 아이템(인벤토리)을 생성할 수 있습니다.  
 API의 인가 관련 테스트의 번거로움을 덜고자 현재 관리자는 모든 API기능 동작 권한을 갖고 있습니다.
 
 <br>
@@ -113,6 +115,8 @@ API의 인가 관련 테스트의 번거로움을 덜고자 현재 관리자는 
 <br>
 
 **👉 테스트가 가능한 별도의 테스트 계정이 제공 됩니다.**  
+
+<a href="#swagger">✅ 현재 호스팅 중인 스웨거 API 문서 목록</a>
 
 <br>
 
@@ -315,7 +319,7 @@ API의 인가 관련 테스트의 번거로움을 덜고자 현재 관리자는 
 
 <br>
 
-![](https://velog.velcdn.com/images/develing1991/post/65232943-b199-4201-82c4-c34b089e6d2d/image.png)
+![](https://velog.velcdn.com/images/develing1991/post/fc53779d-eb64-465e-b873-f4bddaae19b1/image.png)
 
 <br>
 
@@ -365,7 +369,7 @@ API의 인가 관련 테스트의 번거로움을 덜고자 현재 관리자는 
 <h4 align="right">
 	<a href="#list">목차로 이동</a>
 </h4>
-- 테스트 결과 👉 https://github.com/benefits-inc/introduce/blob/main/KafkaTestMulti200.md
+- 테스트 결과 👉 https://github.com/benefits-inc/introduce/blob/main/test/KafkaTestMulti200.md
 
 
 <br><br><br>
@@ -427,6 +431,21 @@ API의 인가 관련 테스트의 번거로움을 덜고자 현재 관리자는 
 <br> 
 
 **또한 다른 사용자를 제한적인 정보로 조회할 수 있는 별도의 `open-api/users/{id}` API가 제공 됩니다.**
+
+<br> 
+
+### 로그아웃 (redis)
+
+- 마스터 + 센티넬 / 슬레이브(replicaof) + 센티넬 / 센티넬
+- 로그아웃 시 redis에 더 이상 사용하지 않을 access, refresh토큰과 토큰의 만료시간을 ttl로 등록합니다.
+- gateway-service에서 redis에 접속하여 해당 토큰을 조회하여 로그아웃 토큰인지 확인 합니다.
+- 비록 해당 토큰이 실제론 유효할지라도 로그아웃 처리 했으므로 gateway-service에서 expired token으로 응답 처리합니다.
+- redis에 등록 된 토큰은 자신의 만료 시간으로 등록 된 ttl시간이 지나면 자동으로 삭제 됩니다.
+
+<br>
+
+![](https://velog.velcdn.com/images/develing1991/post/a87c89da-2bf3-4697-9fed-e05a9526319a/image.png)
+
 
 <br><br><br>
 
@@ -604,7 +623,7 @@ CMD ["/usr/sbin/init" "systemctl" "start" "sshd"]
 
 <br>
 
-![](https://velog.velcdn.com/images/develing1991/post/c6b3b07c-10ab-4bf3-ba24-2d72f2c2c92b/image.png)
+![](https://velog.velcdn.com/images/develing1991/post/0ca8a98f-390c-4259-9193-24b16bea6fba/image.png)
 
 <br><br><br>
 
@@ -711,6 +730,7 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swagg
 **서비스 마다 특징이 부각 되는 의존성 목록 입니다.**
 
 ### 공통
+- IDE: intellij community
 - springboot 3.2.1
 - jdk 17
 - gradle 8.5
@@ -731,6 +751,7 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swagg
 
 ### gateway-service
 - org.springframework.cloud:spring-cloud-starter-gateway
+- org.springframework.boot:spring-boot-starter-data-redis-reactive
 
 <br>
 
@@ -739,6 +760,7 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swagg
 - org.springframework.boot:spring-boot-starter-security
 - org.springframework.boot:spring-boot-starter-data-jpa
 - org.springframework.boot:spring-boot-starter-validation
+- org.springframework.boot:spring-boot-starter-data-redis-reactive
 - io.jsonwebtoken:jjwt-api
 - io.jsonwebtoken:jjwt-impl
 - io.jsonwebtoken:jjwt-jackson
@@ -767,6 +789,9 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swagg
 </h4>
 
 - <del>사용자 주문 취소와 판매자 주문 반려(거절)에 대한 재고 증감 - 동시성 처리 `orderCancel`</del>
+- <del>redis 토큰 session 관리 </del>
+- QueryDsl, Jpql 둘 다 써보고 선택 (특정 서비스 골라서 jpa대신 MyBatis로 변경하기)
+- auto increment id는 고유 값 그 자체로 유지만 하고 대신 PFD0000001같이 직접 id 규칙 구상하기(시퀀스), 모든 연관 맵핑 제거 -> 직접 쿼리 작성
 - user-service를 제외한 다른 마이크로 서비스들 미구현 된 AOP 검증 로직 추가
 - 공통 코드 common-service로 분리 메이븐 업로드 또는 jar로 패키징 후 import로 사용
 - 인증 관련 기능 로직 auth-service로 분리
@@ -775,4 +800,5 @@ supervisor-service: https://benefits.completed0728.site/supervisor-service/swagg
 - Resilience4J circuitbreaker 추가
 - 사용자 주문 취소 건 알림을 위한 SSE(Server Sent Events)기능 추가
 - CI/CD 추가적인 빌드 검증 sonarqube-server 추가
-- 배포 서버 docker-server에서 k8s-server로 이관 해보기
+- 배포 서버 docker-server에서 k8s-server로 이관 해보기 (pods, deployments, services 개념 적용)
+- 구체적인 프론트 기획/개발 - 마주하는 장애 대응 해보기
